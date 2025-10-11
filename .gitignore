@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# 一時ファイル
+*.log
+*.tmp
+
+# Node or Python関連（もし混在していても安心）
+node_modules/
+__pycache__/
+.env
