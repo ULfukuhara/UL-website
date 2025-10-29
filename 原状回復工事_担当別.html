@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>原状回復工事・担当者別評価ダッシュボード</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+<style>
+  :root { --bg:#0b1220; --card:#111a2b; --muted:#9fb0c7; --text:#e6eefb; --accent:#4ea1ff; }
+  html,body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto; }
+  header { padding:16px 20px; border-bottom:1px solid #1b2842; position:sticky; top:0; background:linear-gradient(180deg,#0b1220 80%,transparent); z-index:10;}
+  h1 { font-size:18px; margin:0; letter-spacing:.5px; }
+  .wrap { max-width:1200px; margin:16px auto; padding:0 16px 40px; }
+  .u-flex { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .card { background:var(--card); border:1px solid #1b2842; border-radius:14px; padding:14px; }
+  .controls { gap:8px; }
+  label { font-size:12px; color:var(--muted); }
+  select,input[type="date"] { background:#0e1728; border:1px solid #1b2842; color:var(--text); padding:8px 10px; border-radius:10px; font-size:14px; min-width:140px;}
+  button { background:var(--accent); color:#002244; border:0; padding:8px 12px; border-radius:10px; font-weight:700; cursor:pointer; }
+  button.secondary { background:#0e1728; color:var(--text); border:1px solid #24406d; }
+  .drop { border:2px dashed #29456f; border-radius:14px; padding:18px; text-align:center; color:var(--muted);}
+  .grid { display:grid; grid-template-columns:1.2fr 1fr; gap:14px; }
+  @media (max-width:1000px){ .grid { grid-template-columns:1fr; } }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { padding:10px 8px; border-bottom:1px solid #1b2842; }
+  th { text-align:left; color:var(--muted); user-select:none; cursor:pointer; }
+  td.num { text-align:right; font-variant-numeric: tabular-nums; }
+  .badge { background:#0e1728; border:1px solid #24406d; color:var(--muted); padding:2px 8px; border-radius:999px; font-size:12px; }
+  .pill { padding:2px 8px; border-radius:999px; background:#123; border:1px solid #1f3556; }
+  .muted { color:var(--muted); }
+  .row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .space { height:8px; }
+  .kpi { display:grid; grid-template-columns: repeat(6, minmax(100px,1fr)); gap:10px; }
+  .kpi .card { text-align:center; }
+  .kpi .card h3 { margin:4px 0 2px; font-size:22px; }
+  .kpi .card p { margin:0; font-size:12px; color:var(--muted); }
+  .hint { font-size:12px; color:var(--muted); }
+  .nowrap { white-space:nowrap; }
+</style>
+</head>
+<body>
+<header class="u-flex" style="justify-content:space-between;">
+  <h1>原状回復工事・担当者別評価ダッシュボード</h1>
+  <div class="row">
+    <button class="secondary" id="btn-export-csv" title="集計表をCSVで保存">CSV保存</button>
+    <button class="secondary" id="btn-export-png" title="グラフをPNGで保存">グラフPNG</button>
+    <button id="btn-reset">条件リセット</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- アップロード -->
+  <div class="grid">
+    <div class="card">
+      <div class="u-flex" style="justify-content:space-between;">
+        <div>
+          <strong>データ読み込み</strong><div class="hint">hyouka_001.json / hyouka_002.json をまとめて投入OK</div>
+        </div>
+        <input type="file" id="file-input" multiple accept=".json" />
+      </div>
+      <div class="space"></div>
+      <div id="drop" class="drop">ここに JSON をドラッグ＆ドロップ</div>
+      <div class="space"></div>
+      <div class="hint">※ キー名は「担当」「施工業者」「タイムスタンプ」「5段階評価…」を想定しています</div>
+    </div>
+
+    <!-- フィルタ -->
+    <div class="card">
+      <strong>フィルタ</strong>
+      <div class="space"></div>
+      <div class="u-flex controls">
+        <div>
+          <label>担当</label><br/>
+          <select id="f-tanto"><option value="">すべて</option></select>
+        </div>
+        <div>
+          <label>施工業者</label><br/>
+          <select id="f-gyosha"><option value="">すべて</option></select>
+        </div>
+        <div>
+          <label>期間（開始）</label><br/>
+          <input type="date" id="f-from">
+        </div>
+        <div>
+          <label>期間（終了）</label><br/>
+          <input type="date" id="f-to">
+        </div>
+        <div style="align-self:flex-end;">
+          <button class="secondary" id="btn-apply">適用</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="space"></div>
+
+  <!-- KPI -->
+  <div class="kpi">
+    <div class="card"><p>総件数</p><h3 id="kpi-count">-</h3></div>
+    <div class="card"><p>平均評価</p><h3 id="kpi-avg">-</h3></div>
+    <div class="card"><p>★5</p><h3 id="kpi-s5">-</h3></div>
+    <div class="card"><p>★4</p><h3 id="kpi-s4">-</h3></div>
+    <div class="card"><p>★3</p><h3 id="kpi-s3">-</h3></div>
+    <div class="card"><p>★2以下</p><h3 id="kpi-s2">-</h3></div>
+  </div>
+
+  <div class="space"></div>
+
+  <!-- グラフ -->
+  <div class="grid">
+    <div class="card">
+      <div class="row" style="justify-content:space-between;">
+        <strong>担当者別 平均点</strong>
+        <span class="badge" id="badge-range"></span>
+      </div>
+      <div class="space"></div>
+      <canvas id="chart-avg" height="200"></canvas>
+    </div>
+    <div class="card">
+      <div class="row" style="justify-content:space-between;">
+        <strong>担当者別 ★分布</strong>
+        <span class="badge">★5/★4/★3/★2/★1</span>
+      </div>
+      <div class="space"></div>
+      <canvas id="chart-dist" height="200"></canvas>
+    </div>
+  </div>
+
+  <div class="space"></div>
+
+  <!-- テーブル -->
+  <div class="card">
+    <div class="row" style="justify-content:space-between;">
+      <strong>担当者別 集計表</strong>
+      <span class="hint">ヘッダークリックでソート</span>
+    </div>
+    <div class="space"></div>
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th data-key="担当">担当</th>
+          <th data-key="count" class="nowrap">件数</th>
+          <th data-key="avg" class="nowrap">平均評価</th>
+          <th data-key="s5">★5</th>
+          <th data-key="s4">★4</th>
+          <th data-key="s3">★3</th>
+          <th data-key="s2">★2</th>
+          <th data-key="s1">★1</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <div class="space"></div>
+  <p class="hint">Tips: ★2以下＋コメントあり の抽出CSVが必要なら拡張できます。ご希望あれば追記します。</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+(() => {
+  // ====== ユーティリティ ======
+  const STAR_KEY = '5段階評価　総合的に判断してください\\n\\n★5　そのまま引き渡し可能\\n★4　多少の清掃などあったがほぼ問題なし\\n★3　１時間未満で引き渡し可能\\n★2　１時間以上手直しや清掃が必要だった\\n★1　修繕多数、手直しあり';
+  const DATE_KEYS = ['タイムスタンプ','timestamp','date'];
+  const TANTO_KEYS = ['担当','担当者'];
+  const GYOSHA_KEYS = ['施工業者','業者'];
+
+  const el = id => document.getElementById(id);
+  const fmt = n => (n==null||isNaN(n))? '-' : (Math.round(n*100)/100).toFixed(2);
+  const toDate = (v) => {
+    if (!v) return null;
+    // 例: 2025/10/08 or 2025-10-08
+    const t = String(v).trim().replaceAll('.','/').replaceAll('-','/');
+    const m = t.match(/^(\d{4})[\/](\d{1,2})[\/](\d{1,2})/);
+    if (!m) return null;
+    return new Date(`${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}T00:00:00`);
+  };
+
+  // ====== 状態 ======
+  let raw = [];          // 生データ配列
+  let filtered = [];     // フィルタ適用後
+  let summary = [];      // 担当者別集計
+
+  // ====== 入力ハンドリング（ファイル/ドロップ） ======
+  const drop = el('drop');
+  const fileInput = el('file-input');
+  ['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.style.borderColor = '#4ea1ff'; }));
+  ['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.style.borderColor = '#29456f'; }));
+  drop.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files));
+  fileInput.addEventListener('change', () => handleFiles(fileInput.files));
+
+  function handleFiles(fileList){
+    if(!fileList || !fileList.length) return;
+    const readers = [];
+    for (const f of fileList) {
+      if (!f.name.toLowerCase().endsWith('.json')) continue;
+      readers.push(f.text().then(t => JSON.parse(t)));
+    }
+    Promise.all(readers).then(arrays => {
+      raw = arrays.flat();
+      buildFilters(raw);
+      applyFilters();
+    }).catch(err => alert('JSON読込エラー: ' + err.message));
+  }
+
+  // ====== フィルタUI構築 ======
+  const fTanto = el('f-tanto');
+  const fGyosha = el('f-gyosha');
+  const fFrom = el('f-from');
+  const fTo = el('f-to');
+  el('btn-apply').addEventListener('click', applyFilters);
+  el('btn-reset').addEventListener('click', () => {
+    fTanto.value = '';
+    fGyosha.value = '';
+    fFrom.value = '';
+    fTo.value = '';
+    applyFilters();
+  });
+
+  function getKey(record, candidates) {
+    for (const k of candidates) if (k in record) return k;
+    return null;
+  }
+
+  function buildFilters(data){
+    const sT = new Set();
+    const sG = new Set();
+    data.forEach(r => {
+      const kT = getKey(r, TANTO_KEYS);
+      const kG = getKey(r, GYOSHA_KEYS);
+      if (kT && r[kT]) sT.add(String(r[kT]).trim());
+      if (kG && r[kG]) sG.add(String(r[kG]).trim());
+    });
+    fTanto.innerHTML = `<option value="">すべて</option>` + [...sT].sort().map(v=>`<option>${escapeHtml(v)}</option>`).join('');
+    fGyosha.innerHTML = `<option value="">すべて</option>` + [...sG].sort().map(v=>`<option>${escapeHtml(v)}</option>`).join('');
+  }
+
+  // ====== フィルタ適用 & 集計 ======
+  function applyFilters(){
+    const tVal = fTanto.value;
+    const gVal = fGyosha.value;
+    const dFrom = fFrom.value ? new Date(fFrom.value + 'T00:00:00') : null;
+    const dTo   = fTo.value   ? new Date(fTo.value   + 'T23:59:59') : null;
+
+    filtered = raw.filter(r => {
+      // 担当
+      const kT = getKey(r, TANTO_KEYS);
+      if (tVal && (!kT || String(r[kT]).trim() !== tVal)) return false;
+
+      // 業者
+      const kG = getKey(r, GYOSHA_KEYS);
+      if (gVal && (!kG || String(r[kG]).trim() !== gVal)) return false;
+
+      // 日付
+      const kD = getKey(r, DATE_KEYS);
+      if (dFrom || dTo) {
+        const dt = kD ? toDate(r[kD]) : null;
+        if (dFrom && (!dt || dt < dFrom)) return false;
+        if (dTo && (!dt || dt > dTo)) return false;
+      }
+      return true;
+    });
+
+    // 集計
+    const map = new Map();
+    for (const r of filtered) {
+      const kT = getKey(r, TANTO_KEYS) || '担当';
+      const name = (r[kT] ?? '（不明）').toString().trim() || '（不明）';
+      const star = Number(r[STAR_KEY] ?? r['評価'] ?? r['score'] ?? NaN);
+
+      const obj = map.get(name) || { 担当:name, count:0, sum:0, s1:0, s2:0, s3:0, s4:0, s5:0 };
+      if (!isNaN(star)) {
+        obj.count++; obj.sum += star;
+        if (star===5) obj.s5++;
+        else if (star===4) obj.s4++;
+        else if (star===3) obj.s3++;
+        else if (star===2) obj.s2++;
+        else if (star===1) obj.s1++;
+      }
+      map.set(name, obj);
+    }
+    summary = [...map.values()].map(o => ({...o, avg: o.count? o.sum/o.count : 0}));
+
+    // KPI
+    const kpiCount = filtered.length;
+    const avg = summary.reduce((a,b)=>a + (b.sum||0), 0) / (summary.reduce((a,b)=>a + (b.count||0),0) || 1);
+    const s5 = summary.reduce((a,b)=>a + b.s5, 0);
+    const s4 = summary.reduce((a,b)=>a + b.s4, 0);
+    const s3 = summary.reduce((a,b)=>a + b.s3, 0);
+    const s2orLess = summary.reduce((a,b)=>a + b.s2 + b.s1, 0);
+
+    el('kpi-count').textContent = kpiCount;
+    el('kpi-avg').textContent = fmt(avg);
+    el('kpi-s5').textContent = s5;
+    el('kpi-s4').textContent = s4;
+    el('kpi-s3').textContent = s3;
+    el('kpi-s2').textContent = s2orLess;
+
+    // バッジ期間
+    const dates = filtered.map(r => toDate(r[getKey(r, DATE_KEYS)]));
+    const minD = dates.filter(Boolean).sort((a,b)=>a-b)[0];
+    const maxD = dates.filter(Boolean).sort((a,b)=>b-a)[0];
+    el('badge-range').textContent = (minD && maxD) ? `${fmtDate(minD)} 〜 ${fmtDate(maxD)}` : '全期間';
+
+    // 表 & グラフレンダ
+    renderTable(summary);
+    renderCharts(summary);
+  }
+
+  // ====== テーブル ======
+  let sortKey = 'avg'; let sortDir = -1; // デフォ: 平均降順
+  const tbody = el('tbody');
+  Array.from(document.querySelectorAll('#tbl thead th')).forEach(th=>{
+    th.addEventListener('click', ()=>{
+      const key = th.dataset.key;
+      if (!key) return;
+      if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = key==='担当' ? 1 : -1; }
+      renderTable(summary);
+    });
+  });
+
+  function renderTable(rows){
+    const data = [...rows].sort((a,b)=>{
+      const av = a[sortKey]; const bv = b[sortKey];
+      if (typeof av === 'string' || typeof bv === 'string') return String(av).localeCompare(String(bv),'ja')*sortDir;
+      return ((bv??0) - (av??0))* (sortDir===-1?1:-1);
+    });
+
+    tbody.innerHTML = data.map(r=>`
+      <tr>
+        <td>${escapeHtml(r.担当)}</td>
+        <td class="num">${r.count}</td>
+        <td class="num">${fmt(r.avg)}</td>
+        <td class="num">${r.s5}</td>
+        <td class="num">${r.s4}</td>
+        <td class="num">${r.s3}</td>
+        <td class="num">${r.s2}</td>
+        <td class="num">${r.s1}</td>
+      </tr>
+    `).join('') || `<tr><td colspan="8" class="muted">データがありません</td></tr>`;
+  }
+
+  // ====== グラフ ======
+  let chartAvg, chartDist;
+
+  function renderCharts(rows){
+    const labels = rows.map(r=>r.担当);
+    const avg = rows.map(r=>Number(fmt(r.avg)));
+
+    const dist5 = rows.map(r=>r.s5);
+    const dist4 = rows.map(r=>r.s4);
+    const dist3 = rows.map(r=>r.s3);
+    const dist2 = rows.map(r=>r.s2);
+    const dist1 = rows.map(r=>r.s1);
+
+    // 平均点
+    chartAvg?.destroy();
+    chartAvg = new Chart(el('chart-avg'), {
+      type: 'bar',
+      data: { labels, datasets: [{ label:'平均点', data: avg }]},
+      options: {
+        responsive:true,
+        plugins:{ legend:{ display:false }, tooltip:{ enabled:true }},
+        scales:{ y:{ suggestedMin:0, suggestedMax:5, ticks:{ stepSize:1 } } }
+      }
+    });
+
+    // 分布
+    chartDist?.destroy();
+    chartDist = new Chart(el('chart-dist'), {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [
+          { label:'★5', data: dist5, stack:'s' },
+          { label:'★4', data: dist4, stack:'s' },
+          { label:'★3', data: dist3, stack:'s' },
+          { label:'★2', data: dist2, stack:'s' },
+          { label:'★1', data: dist1, stack:'s' },
+        ]
+      },
+      options: {
+        responsive:true,
+        plugins:{ legend:{ position:'bottom' }, tooltip:{ enabled:true }},
+        scales:{ x:{ stacked:true }, y:{ stacked:true, beginAtZero:true } }
+      }
+    });
+  }
+
+  // ====== エクスポート ======
+  el('btn-export-csv').addEventListener('click', () => {
+    if (!summary.length) return alert('データがありません');
+    const header = ['担当','件数','平均評価','★5','★4','★3','★2','★1'];
+    const rows = summary.map(r=>[r.担当,r.count,fmt(r.avg),r.s5,r.s4,r.s3,r.s2,r.s1]);
+    const csv = [header, ...rows].map(a=>a.map(x=>String(x).includes(',')?`"${String(x).replaceAll('"','""')}"`:x).join(',')).join('\r\n');
+    const blob = new Blob([csv],{type:'text/csv;charset=utf-8;'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = '担当者別_評価集計.csv';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  el('btn-export-png').addEventListener('click', ()=>{
+    if (!chartAvg) return alert('グラフがありません');
+    const url = chartAvg.toBase64Image();
+    const a = document.createElement('a');
+    a.href = url; a.download = '担当者別_平均点.png'; a.click();
+  });
+
+  // ====== ヘルパ ======
+  function escapeHtml(s){ return String(s??'').replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));}
+  function fmtDate(d){ return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+
+  // ====== デモ: すぐ試せるよう空ロード時は説明表示のみ ======
+  // 実データはファイル選択 or ドロップで読み込んでください。
+})();
+</script>
+</body>
+</html>
