@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>原状回復工事 品質フィードバックレポート - 株式会社REC 御中</title>
+    <!-- Tailwind CSSを読み込みます -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +14,7 @@
             scroll-behavior: smooth;
         }
         body {
+            /* 日本語はNoto Sans JP、英数字はInterを使用します */
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -39,17 +41,24 @@
 
     <div class="max-w-4xl mx-auto p-4 sm:p-8 md:p-12">
 
-        <!-- 4. 株式会社REC -->
+        <!-- 1. 株式会社REC -->
         <div id="株式会社REC" class="bg-white rounded-lg shadow-xl overflow-hidden mb-8">
+            <!-- ヘッダー -->
             <div class="bg-blue-800 p-6 sm:p-8">
                 <h1 class="text-2xl sm:text-3xl font-bold text-white">原状回復工事 品質フィードバックレポート</h1>
                 <p class="text-blue-200 text-lg mt-2">株式会社REC 御中</p>
             </div>
+            
+            <!-- メインコンテンツ -->
             <div class="p-6 sm:p-8 md:p-10 space-y-8">
+                
+                <!-- ご挨拶 -->
                 <section>
                     <p class="text-base text-gray-700 leading-relaxed">
-                        拝啓、貴社におかれましては、平素より弊社業務に多大なるご協力を賜り、厚く御礼申し上げます。
-                        2025年9月以降の完了検査データを集計いたしましたので、レポートを共有させていただきます。
+                        平素より弊社業務にご協力いただき、誠にありがとうございます。
+                        このたび、2025年9月以降に実施いただいた完了検査の結果を集計いたしました。
+                        期間中、15件の案件をご担当いただき、誠にありがとうございます。
+                        日頃の施工品質向上へのご尽力に感謝申し上げるとともに、評価レポートを共有させていただきます。
                     </p>
                 </section>
                 <hr class="border-gray-200">
@@ -60,7 +69,8 @@
                         1. 総合評価
                     </h2>
                     <p class="text-base text-gray-700 leading-relaxed mb-5">
-                        貴社の平均評価は<strong class="text-red-700 text-lg font-bold">3.41点</strong>となり、全業者平均（3.63点）を下回っております。
+                        貴社の平均評価は<strong class="text-blue-700 text-lg font-bold">3.47点</strong>となりました（全業者平均: 3.60点）。
+                        多くの案件で安定した評価をいただく一方、一部の案件で施工・清掃品質に関するご指摘がございました。
                     </p>
                     <div class="overflow-x-auto rounded-lg border border-gray-200">
                         <table class="min-w-full divide-y divide-gray-200">
@@ -72,8 +82,8 @@
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-lg font-bold text-gray-900">17件</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-lg font-bold text-red-700">3.41点</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-lg font-bold text-gray-900">15件</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-lg font-bold text-blue-700">3.47点</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -86,7 +96,8 @@
                         2. 評価の内訳
                     </h2>
                     <p class="text-base text-gray-700 leading-relaxed mb-5">
-                        担当17件中、★2評価が2件（低評価率 11.8%）発生しております。
+                        ご担当いただいた15件中、13件（全体の約87%）が★3以上の評価となっております。
+                        一方で、現地での手直しに時間を要する★2評価が2件ございました。
                     </p>
                     <div class="overflow-x-auto rounded-lg border border-gray-200">
                         <table class="min-w-full divide-y divide-gray-200">
@@ -99,7 +110,7 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 <tr><td class="px-6 py-4">★5（最高評価）</td><td class="px-6 py-4">2件</td></tr>
                                 <tr><td class="px-6 py-4">★4（良い）</td><td class="px-6 py-4">5件</td></tr>
-                                <tr><td class="px-6 py-4">★3（普通）</td><td class="px-6 py-4"><strong class="font-bold">8件</strong></td></tr>
+                                <tr><td class="px-6 py-4">★3（普通）</td><td class="px-6 py-4">6件</td></tr>
                                 <tr><td class="px-6 py-4 text-red-600">★2（悪い）</td><td class="px-6 py-4 text-red-600"><strong class="font-bold">2件</strong></td></tr>
                                 <tr><td class="px-6 py-4">★1（最低評価）</td><td class="px-6 py-4">0件</td></tr>
                             </tbody>
@@ -107,48 +118,39 @@
                     </div>
                 </section>
                 
-                <!-- 3. 品質改善のお願い（要確認） -->
+                <!-- 3. 特記事項（低評価案件） -->
                 <section>
                     <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 border-l-4 border-red-600 pl-4 mb-5">
-                        3. 品質改善のお願い（要確認）
+                        3. 特記事項 (★2評価案件)
                     </h2>
-                    <p class="text-base text-gray-700 leading-relaxed mb-5">
-                        「清掃抜け」や「建具の不具合」に関する指摘がございました。ご確認をお願いいたします。
-                    </p>
-                    <div class="space-y-4">
-                        <div class="bg-red-50 border border-red-200 rounded-lg p-5">
-                            <h3 class="text-lg font-semibold text-red-800">【★2評価】アルファ帝塚山</h3>
-                            <blockquote class="mt-4 border-l-4 border-red-300 pl-4 italic text-gray-700">
-                                <p class="font-semibold">担当者コメント:</p>
-                                <p>「郵便受け、キッチン収納庫清掃抜け」</p>
-                            </blockquote>
-                        </div>
-                        <div class="bg-red-50 border border-red-200 rounded-lg p-5">
-                            <h3 class="text-lg font-semibold text-red-800">【★2評価】グレイス丸萬</h3>
-                            <blockquote class="mt-4 border-l-4 border-red-300 pl-4 italic text-gray-700">
-                                <p class="font-semibold">担当者コメント:</p>
-                                <p>「浴室の洗面ボウルの隙間埋め・網戸の戸車破損による開閉不良」</p>
-                            </blockquote>
-                        </div>
-
-                        <div class="mt-4 pt-4 border-t border-gray-200">
-                            <p class="font-semibold text-gray-800">[弊社からのフィードバック]</p>
-                            <p class="text-base text-gray-700 leading-relaxed mt-2">
-                                「郵便受け」や「収納庫」といった共用部や細部の清掃抜けは、入居者様の第一印象に大きく影響します。<strong class="text-gray-900">清掃範囲の再確認</strong>をお願いいたします。
-                                また、網戸の開閉不良や隙間埋めといった<strong class="text-gray-900">建付け・仕上げ作業の最終確認</strong>を徹底していただくようお願いいたします。
-                            </p>
-                        </div>
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-5">
+                        <h3 class="text-lg font-semibold text-red-800">要確認案件（2件）</h3>
+                        <p class="text-base text-gray-700 leading-relaxed mt-2 mb-4">
+                            以下の案件において、清掃の仕上げ不足や設備の不具合が報告されました。
+                            お手数ですが、詳細をご確認いただき、今後の完了検査の精度向上にご協力をお願いいたします。
+                        </p>
+                        <!-- ★2の案件リスト -->
+                        <ul class="space-y-3">
+                            <li>
+                                <strong class="text-gray-900">・アルファ帝塚山 (403)</strong>:
+                                <span class="text-gray-700">郵便受け、キッチン収納庫の清掃抜けがございました。</span>
+                            </li>
+                            <li>
+                                <strong class="text-gray-900">・グレイス丸萬 (308)</strong>:
+                                <span class="text-gray-700">浴室の洗面ボウルの隙間埋め、網戸の戸車破損による開閉不良がございました。</span>
+                            </li>
+                        </ul>
                     </div>
                 </section>
 
-                <!-- 3.5. 担当物件一覧（ここから追加） -->
+                <!-- 4. 担当物件一覧 -->
                 <section>
                     <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 border-l-4 border-blue-600 pl-4 mb-5">
-                        4. 担当物件一覧（全17件）
+                        4. 担当物件一覧（全15件）
                     </h2>
-                    <div class="overflow-x-auto rounded-lg border border-gray-200">
+                    <div class="overflow-x-auto rounded-lg border border-gray-200 max-h-[600px]">
                         <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
+                            <thead class="bg-gray-50 sticky top-0">
                                 <tr>
                                     <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">検査日</th>
                                     <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">物件名・号室</th>
@@ -158,7 +160,7 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200 text-sm">
-                                
+                                <!-- データは日付順（降順）でソートして表示 -->
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/10/27</td>
                                     <td class="px-4 py-3 whitespace-nowrap">ドミトリオ仁王田 <span class="text-gray-500 text-xs">511</span></td>
@@ -166,15 +168,13 @@
                                     <td class="px-4 py-3 text-gray-500">-</td>
                                     <td class="px-4 py-3 whitespace-nowrap">山岸</td>
                                 </tr>
-                                
-                                <tr class="bg-green-50 hover:bg-green-100">
+                                <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/10/20</td>
                                     <td class="px-4 py-3 whitespace-nowrap">カーサ御崎 <span class="text-gray-500 text-xs">110</span></td>
-                                    <td class="px-2 py-3 whitespace-nowrap font-bold text-green-600">★5</td>
+                                    <td class="px-2 py-3 whitespace-nowrap font-bold text-gray-700">★5</td>
                                     <td class="px-4 py-3 text-gray-500">-</td>
                                     <td class="px-4 py-3 whitespace-nowrap">山本</td>
                                 </tr>
-                                
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/10/16</td>
                                     <td class="px-4 py-3 whitespace-nowrap">グレイス丸萬 <span class="text-gray-500 text-xs">302</span></td>
@@ -182,15 +182,13 @@
                                     <td class="px-4 py-3 text-gray-500">-</td>
                                     <td class="px-4 py-3 whitespace-nowrap">山岸</td>
                                 </tr>
-                                
-                                <tr class="bg-red-50 hover:bg-red-100">
+                                <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/10/16</td>
                                     <td class="px-4 py-3 whitespace-nowrap">グレイス丸萬 <span class="text-gray-500 text-xs">308</span></td>
                                     <td class="px-2 py-3 whitespace-nowrap font-bold text-red-600">★2</td>
-                                    <td class="px-4 py-3 text-red-700">浴室の洗面ボウルの隙間埋め・網戸の戸車破損による開閉不良</td>
+                                    <td class="px-4 py-3 text-gray-700">浴室の洗面ボウルの隙間埋め・網戸の戸車破損による開閉不良</td>
                                     <td class="px-4 py-3 whitespace-nowrap">山岸</td>
                                 </tr>
-                                
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/10/16</td>
                                     <td class="px-4 py-3 whitespace-nowrap">ドライバウム江坂 <span class="text-gray-500 text-xs">802</span></td>
@@ -198,15 +196,13 @@
                                     <td class="px-4 py-3 text-gray-500">-</td>
                                     <td class="px-4 py-3 whitespace-nowrap">阿部</td>
                                 </tr>
-                                
-                                <tr class="bg-green-50 hover:bg-green-100">
+                                <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/10/14</td>
                                     <td class="px-4 py-3 whitespace-nowrap">ＮＥＸＴ２１ <span class="text-gray-500 text-xs">405</span></td>
-                                    <td class="px-2 py-3 whitespace-nowrap font-bold text-green-600">★5</td>
+                                    <td class="px-2 py-3 whitespace-nowrap font-bold text-gray-700">★5</td>
                                     <td class="px-4 py-3 text-gray-500">-</td>
                                     <td class="px-4 py-3 whitespace-nowrap">山本</td>
                                 </tr>
-                                
                                 <tr class="bg-yellow-50 hover:bg-yellow-100">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/10/10</td>
                                     <td class="px-4 py-3 whitespace-nowrap">Ｋ’ｓスクエア江坂 <span class="text-gray-500 text-xs">706</span></td>
@@ -214,7 +210,6 @@
                                     <td class="px-4 py-3 text-gray-700">ksスクエア江坂だけ清掃のレベル低いと感じます。清掃に時間かかるので改善お願い致します。</td>
                                     <td class="px-4 py-3 whitespace-nowrap">阿部</td>
                                 </tr>
-                                
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/10/08</td>
                                     <td class="px-4 py-3 whitespace-nowrap">グレイス丸萬 <span class="text-gray-500 text-xs">710</span></td>
@@ -222,15 +217,13 @@
                                     <td class="px-4 py-3 text-gray-500">-</td>
                                     <td class="px-4 py-3 whitespace-nowrap">山岸</td>
                                 </tr>
-                                
-                                <tr class="bg-red-50 hover:bg-red-100">
+                                <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/09/29</td>
                                     <td class="px-4 py-3 whitespace-nowrap">アルファ帝塚山 <span class="text-gray-500 text-xs">403</span></td>
                                     <td class="px-2 py-3 whitespace-nowrap font-bold text-red-600">★2</td>
-                                    <td class="px-4 py-3 text-red-700">郵便受け、キッチン収納庫清掃抜け</td>
+                                    <td class="px-4 py-3 text-gray-700">郵便受け、キッチン収納庫清掃抜け</td>
                                     <td class="px-4 py-3 whitespace-nowrap">山本</td>
                                 </tr>
-                                
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/09/26</td>
                                     <td class="px-4 py-3 whitespace-nowrap">ドミトリオ仁王田 <span class="text-gray-500 text-xs">403</span></td>
@@ -238,7 +231,6 @@
                                     <td class="px-4 py-3 text-gray-500">-</td>
                                     <td class="px-4 py-3 whitespace-nowrap">山岸</td>
                                 </tr>
-                                
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/09/24</td>
                                     <td class="px-4 py-3 whitespace-nowrap">ウエストフィールド№６ <span class="text-gray-500 text-xs">802</span></td>
@@ -246,7 +238,6 @@
                                     <td class="px-4 py-3 text-gray-500">-</td>
                                     <td class="px-4 py-3 whitespace-nowrap">山岸</td>
                                 </tr>
-                                
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/09/12</td>
                                     <td class="px-4 py-3 whitespace-nowrap">カピオス上山手 <span class="text-gray-500 text-xs">206</span></td>
@@ -254,15 +245,13 @@
                                     <td class="px-4 py-3 text-gray-500">-</td>
                                     <td class="px-4 py-3 whitespace-nowrap">山岸</td>
                                 </tr>
-                                
                                 <tr class="bg-yellow-50 hover:bg-yellow-100">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/09/12</td>
                                     <td class="px-4 py-3 whitespace-nowrap">ドライバウム江坂 <span class="text-gray-500 text-xs">506</span></td>
                                     <td class="px-2 py-3 whitespace-nowrap font-bold text-gray-700">★3</td>
-                                    <td class="px-4 py-3 text-gray-700">洗面所タオル掛け固定入れるのであれば同時にトイレペーパーホルダーの固定もお願いします。ぐらついておりました。各所埃の拭き取り忘れありました。キッチン手元灯電球切れ</td>
+                                    <td class="px-4 py-3 text-gray-700">洗面所タオル掛け固定入れるのであれば同時にトイレペーパーホルダーの固定もお願いします。ぐらついておりました。 各所埃の拭き取り忘れありました。 キッチン手元灯電球切れ</td>
                                     <td class="px-4 py-3 whitespace-nowrap">阿部</td>
                                 </tr>
-                                
                                 <tr class="bg-yellow-50 hover:bg-yellow-100">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/09/12</td>
                                     <td class="px-4 py-3 whitespace-nowrap">ドライバウム江坂 <span class="text-gray-500 text-xs">503</span></td>
@@ -270,7 +259,6 @@
                                     <td class="px-4 py-3 text-gray-700">多少のクロス拭きあり</td>
                                     <td class="px-4 py-3 whitespace-nowrap">阿部</td>
                                 </tr>
-                                
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/09/12</td>
                                     <td class="px-4 py-3 whitespace-nowrap">ドミトリオ仁王田 <span class="text-gray-500 text-xs">301</span></td>
@@ -278,7 +266,6 @@
                                     <td class="px-4 py-3 text-gray-500">-</td>
                                     <td class="px-4 py-3 whitespace-nowrap">山岸</td>
                                 </tr>
-                                
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/09/09</td>
                                     <td class="px-4 py-3 whitespace-nowrap">ルーセントパークショア <span class="text-gray-500 text-xs">315</span></td>
@@ -286,7 +273,6 @@
                                     <td class="px-4 py-3 text-gray-500">-</td>
                                     <td class="px-4 py-3 whitespace-nowrap">山岸</td>
                                 </tr>
-                                
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 whitespace-nowrap">2025/09/07</td>
                                     <td class="px-4 py-3 whitespace-nowrap">ペルル垂水 <span class="text-gray-500 text-xs">207</span></td>
@@ -294,7 +280,6 @@
                                     <td class="px-4 py-3 text-gray-500">-</td>
                                     <td class="px-4 py-3 whitespace-nowrap">澤岡</td>
                                 </tr>
-                                
                             </tbody>
                         </table>
                     </div>
@@ -302,19 +287,28 @@
                 
                 <hr class="border-gray-200">
                 
-                <!-- 4. まとめ (セクション番号を5に変更) -->
+                <!-- 5. まとめ -->
                 <section>
                     <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 border-l-4 border-blue-600 pl-4 mb-5">
                         5. まとめ
                     </h2>
                     <p class="text-base text-gray-700 leading-relaxed">
-                        平均評価が全体を下回る結果となり、改善をお願いしたい状況です。上記フィードバックおよび物件一覧をご参考にいただき、作業完了時の「抜け・漏れ」を防ぐチェック体制の見直しをご検討いただけますと幸いです。
+                        いつもご対応いただき、誠にありがとうございます。
+                        ★2評価の案件では「清掃抜け」や「設備の不具合」が報告されました。また、★3評価の案件でも、特に「K'sスクエア江坂」での清掃品質や、「ドライバウム江坂」での備品のぐらつき・拭き残しについてコメントがございました。
+                        <br><br>
+                        お手数ですが、施工完了時の最終確認（特に清掃の仕上げ、収納内部や郵便受けの確認、設備の動作・固定確認）を一層強化いただけますと、現地での手直し工数が削減され大変助かります。
+                        引き続き、入居者様に喜んでいただけるお部屋作りのため、ご協力いただけますと幸いです。
+                        今後ともどうぞよろしくお願いいたします。
                     </p>
                 </section>
             </div>
+            
+            <!-- フッター -->
             <footer class="bg-gray-50 p-6 text-center text-sm text-gray-500">
-                © 2025 [UL] - Confidential Quality Report
+                © 2025 ユニヴ・ライフ株式会社 - Confidential Quality Report
             </footer>
         </div>
 
-   
+    </div>
+</body>
+</html>
