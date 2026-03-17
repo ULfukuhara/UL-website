@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品質レポート_LINK</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card: #ffffff;
+      --line: #e2e8f0;
+      --text: #1e293b;
+      --muted: #64748b;
+      --head: #edf2f7;
+      --issue: #fff8f4;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --shadow-soft: 0 4px 14px rgba(15, 23, 42, 0.06);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 26px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      line-height: 1.5;
+    }
+    .container { max-width: 1120px; margin: 0 auto; }
+    .top-hero {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: linear-gradient(135deg, #e8f1ff 0%, #f7fbff 48%, #ffffff 100%);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 16px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: 0.01em;
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .hero-side {
+      display: grid;
+      gap: 8px;
+    }
+    .hero-info-card {
+      border: 1px solid #dbeafe;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+    .hero-info-card .label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+    .hero-info-card .value {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      word-break: break-word;
+    }
+    .quality-pill {
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .ql-good { color: #166534; background: #dcfce7; border-color: #86efac; }
+    .ql-mid { color: #1e40af; background: #dbeafe; border-color: #93c5fd; }
+    .ql-needs { color: #9a3412; background: #ffedd5; border-color: #fdba74; }
+    .ql-default { color: #334155; background: #f1f5f9; border-color: #cbd5e1; }
+    h2 {
+      margin: 40px 0 18px;
+      font-size: 21px;
+      border-left: 6px solid var(--accent);
+      padding-left: 12px;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .section-tag {
+      display: inline-block;
+      font-size: 11px;
+      line-height: 1;
+      color: #9a3412;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 999px;
+      padding: 4px 8px;
+      white-space: nowrap;
+    }
+    .meta { color: var(--muted); margin-bottom: 14px; }
+    .subnote { color: var(--muted); font-size: 12px; margin: -4px 0 10px 0; }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 12px;
+    }
+    .summary-box {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+      white-space: pre-wrap;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03);
+    }
+    .summary-box .small { color: var(--muted); font-size: 12px; margin-bottom: 6px; }
+    .ai-box {
+      background: #f7fbff;
+      border: 1px solid #dbeafe;
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: 0 1px 3px rgba(37, 99, 235, 0.06);
+    }
+    .ai-text-box { margin-top: 12px; white-space: pre-wrap; }
+    .ai-message-box {
+      background: #f0f9ff;
+      border-color: #bfdbfe;
+      white-space: pre-wrap;
+    }
+    .ai-box ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .ai-box li {
+      margin: 4px 0;
+    }
+    .collapse-wrap { margin-top: 4px; }
+    .collapse-actions {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+    .collapse-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      border-radius: 10px;
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .collapse-btn:hover { background: #f8fafc; }
+    .is-hidden { display: none; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(130px, 1fr));
+      gap: 12px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 3px;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
+    }
+    .card .label { font-size: 12px; color: var(--muted); }
+    .card .value { font-size: 32px; font-weight: 800; letter-spacing: -0.01em; margin-top: 8px; line-height: 1.05; }
+    .rating-chart-box {
+      margin-bottom: 10px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .rating-bar-row {
+      display: grid;
+      grid-template-columns: 52px 1fr 118px;
+      gap: 10px;
+      align-items: center;
+      margin: 6px 0;
+    }
+    .rating-bar-label {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: right;
+    }
+    .rating-bar-track {
+      height: 10px;
+      background: #eaf1fb;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .rating-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
+      border-radius: 999px;
+    }
+    .rating-bar-value {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: right;
+      white-space: nowrap;
+    }
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 760px; }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 11px 12px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      word-break: break-word;
+    }
+    th {
+      background: var(--head);
+      font-weight: 700;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      box-shadow: inset 0 -1px 0 rgba(148, 163, 184, 0.35), 0 1px 2px rgba(15, 23, 42, 0.06);
+    }
+    tbody tr:nth-child(odd) td {
+      background: #fcfdff;
+    }
+    tbody tr:hover td {
+      background: var(--accent-soft);
+    }
+    tr.has-issue td { background: var(--issue); }
+    tr.score-2 td { background: #fff1e8; }
+    tr.score-1 td { background: #ffe7e7; }
+    .rating-badge {
+      display: inline-block;
+      min-width: 40px;
+      text-align: center;
+      color: #fff;
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+    .badge-5 { background: #16a34a; }
+    .badge-4 { background: #2563eb; }
+    .badge-3 { background: #6b7280; }
+    .badge-2 { background: #ea580c; }
+    .badge-1 { background: #dc2626; }
+    .badge-na { background: #9ca3af; }
+    td.issue-col { min-width: 380px; }
+    td.room-col { min-width: 120px; }
+    .final {
+      border-top: 1px solid var(--line);
+      margin-top: 28px;
+      padding-top: 12px;
+      color: var(--muted);
+      white-space: pre-wrap;
+    }
+    .criteria-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #f8fafc;
+      padding: 12px 14px;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03);
+    }
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(140px, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .criteria-item {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 8px;
+      background: #fff;
+      font-size: 12px;
+      color: #334155;
+    }
+    .criteria-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #0f172a;
+    }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .summary-grid { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
+      .criteria-grid { grid-template-columns: 1fr; }
+    }
+    @media print {
+      @page { size: A4; margin: 12mm; }
+      body { padding: 0; font-size: 11pt; }
+      .container { max-width: none; }
+      .top-hero, .card, .summary-box, .table-wrap {
+        box-shadow: none;
+      }
+      tbody tr:nth-child(odd) td,
+      tbody tr:hover td {
+        background: transparent;
+      }
+      .table-wrap { overflow: visible; }
+      table { min-width: 0; }
+      h2 { break-after: avoid; }
+      .card, .summary-box, .table-wrap { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-hero">
+      <div class="hero-grid">
+        <div class="hero-main">
+          <div class="hero-head">
+            <h1>原状回復工事 品質レポート</h1>
+            <span class="quality-pill ql-good">品質レベル: 良好</span>
+          </div>
+          <div class="hero-meta">
+            <span>社外送付版</span>
+          </div>
+        </div>
+        <div class="hero-side">
+          <div class="hero-info-card">
+            <div class="label">対象業者</div>
+            <div class="value">LINK</div>
+          </div>
+          <div class="hero-info-card">
+            <div class="label">作成日</div>
+            <div class="value">2026/03/17 23:32:42</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="meta">業者向け品質レポート</div>
+
+    <h2>1. 概要コメント</h2>
+    <div class="summary-grid">
+      <div class="summary-box">
+        <div class="small">概要コメント</div>
+        LINK の評価は平均 4.29 点、有効件数 49 件、是正対象 1 件です。
+      </div>
+      <div class="summary-box">
+        <div class="small">quality_level</div>
+        <strong>良好</strong>
+      </div>
+    </div>
+    
+
+    <h2>2. 概要</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="label">総件数</div>
+        <div class="value">49</div>
+      </div>
+      <div class="card">
+        <div class="label">平均評価</div>
+        <div class="value">4.29</div>
+      </div>
+      <div class="card">
+        <div class="label">是正対象件数</div>
+        <div class="value">1</div>
+      </div>
+      <div class="card">
+        <div class="label">★4以上比率</div>
+        <div class="value">77.55%</div>
+      </div>
+      <div class="card">
+        <div class="label">品質レベル</div>
+        <div class="value">良好</div>
+      </div>
+    </div>
+
+    <h2>3. 評価分布</h2>
+    <div class="rating-chart-box">
+      <div class="rating-bar-row"><div class="rating-bar-label">★5</div><div class="rating-bar-track"><div class="rating-bar-fill" style="width: 53.06%;"></div></div><div class="rating-bar-value">26件 / 53.06%</div></div><div class="rating-bar-row"><div class="rating-bar-label">★4</div><div class="rating-bar-track"><div class="rating-bar-fill" style="width: 24.49%;"></div></div><div class="rating-bar-value">12件 / 24.49%</div></div><div class="rating-bar-row"><div class="rating-bar-label">★3</div><div class="rating-bar-track"><div class="rating-bar-fill" style="width: 20.41%;"></div></div><div class="rating-bar-value">10件 / 20.41%</div></div><div class="rating-bar-row"><div class="rating-bar-label">★2</div><div class="rating-bar-track"><div class="rating-bar-fill" style="width: 2.04%;"></div></div><div class="rating-bar-value">1件 / 2.04%</div></div><div class="rating-bar-row"><div class="rating-bar-label">★1</div><div class="rating-bar-track"><div class="rating-bar-fill" style="width: 0.0%;"></div></div><div class="rating-bar-value">0件 / 0.0%</div></div>
+    </div>
+    <div class='table-wrap'><table><thead><tr><th>評価</th><th>件数</th><th>構成比(%)</th></tr></thead><tbody><tr><td>5</td><td>26</td><td>53.06</td></tr><tr><td>4</td><td>12</td><td>24.49</td></tr><tr><td>3</td><td>10</td><td>20.41</td></tr><tr><td>2</td><td>1</td><td>2.04</td></tr><tr><td>1</td><td>0</td><td>0.0</td></tr></tbody></table></div>
+
+    <h2 class="section-title"><span>4. 是正対象一覧（評価2以下）</span><span class="section-tag">要確認</span></h2>
+    <div class='table-wrap'><table><thead><tr><th>No</th><th>物件名</th><th>号室</th><th>評価</th><th>問題点</th><th>担当者</th><th>タイムスタンプ</th></tr></thead><tbody><tr class='has-issue score-2'><td>1</td><td>ホワイティ18</td><td class='room-col'>301</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>トイレのドアノブが空回りしており、正常に作動していない状態でした。また、浴室入口の木枠は塗装の剥がれが大きく進んでいる状況でした。</td><td>久保</td><td>2026/02/05 09:24:56</td></tr></tbody></table></div>
+
+    <h2>5. 全件一覧（全49件）</h2>
+    <div class="subnote">詳細確認用として全件一覧を掲載しています。必要に応じてご確認ください。</div>
+    <div class="collapse-wrap" data-collapse="all-records"><div class="collapse-preview"><div class='table-wrap'><table><thead><tr><th>No</th><th>物件名</th><th>号室</th><th>評価</th><th>問題点</th><th>担当者</th><th>タイムスタンプ</th></tr></thead><tbody><tr><td>1</td><td>フィオーレ南平台</td><td class='room-col'>304</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/01/06 10:55:18</td></tr><tr><td>2</td><td>グランヴァレー彩都</td><td class='room-col'>704</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>松井</td><td>2026/01/07 09:56:05</td></tr><tr><td>3</td><td>第２高槻ハイム</td><td class='room-col'>207</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/01/09 10:08:55</td></tr><tr><td>4</td><td>ソキウス山手町</td><td class='room-col'>401</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/01/12 18:32:02</td></tr><tr class='has-issue'><td>5</td><td>メゾンヴェール月見町Ⅱ</td><td class='room-col'>6</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>台所水栓の付け根から漏水あり</td><td>谷川</td><td>2026/01/16 10:20:47</td></tr><tr><td>6</td><td>ドームイバロード</td><td class='room-col'>505</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/01/16 16:19:26</td></tr><tr><td>7</td><td>２２２番館</td><td class='room-col'>308</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/01/22 10:24:35</td></tr><tr><td>8</td><td>ノイレーベン古曽部</td><td class='room-col'>212</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/01/26 18:21:58</td></tr><tr class='has-issue'><td>9</td><td>ブラオ高槻</td><td class='room-col'>210</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>エアコン室内ダクトカバー隙間補修</td><td>谷川</td><td>2026/01/26 18:25:41</td></tr><tr class='has-issue'><td>10</td><td>ブラオ高槻</td><td class='room-col'>308</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>エアコンダクトカバー隙間あり、ドアクローザー固定ビス外れ</td><td>谷川</td><td>2026/01/26 18:27:40</td></tr></tbody></table></div></div><div class="collapse-full is-hidden"><div class='table-wrap'><table><thead><tr><th>No</th><th>物件名</th><th>号室</th><th>評価</th><th>問題点</th><th>担当者</th><th>タイムスタンプ</th></tr></thead><tbody><tr><td>1</td><td>フィオーレ南平台</td><td class='room-col'>304</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/01/06 10:55:18</td></tr><tr><td>2</td><td>グランヴァレー彩都</td><td class='room-col'>704</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>松井</td><td>2026/01/07 09:56:05</td></tr><tr><td>3</td><td>第２高槻ハイム</td><td class='room-col'>207</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/01/09 10:08:55</td></tr><tr><td>4</td><td>ソキウス山手町</td><td class='room-col'>401</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/01/12 18:32:02</td></tr><tr class='has-issue'><td>5</td><td>メゾンヴェール月見町Ⅱ</td><td class='room-col'>6</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>台所水栓の付け根から漏水あり</td><td>谷川</td><td>2026/01/16 10:20:47</td></tr><tr><td>6</td><td>ドームイバロード</td><td class='room-col'>505</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/01/16 16:19:26</td></tr><tr><td>7</td><td>２２２番館</td><td class='room-col'>308</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/01/22 10:24:35</td></tr><tr><td>8</td><td>ノイレーベン古曽部</td><td class='room-col'>212</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/01/26 18:21:58</td></tr><tr class='has-issue'><td>9</td><td>ブラオ高槻</td><td class='room-col'>210</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>エアコン室内ダクトカバー隙間補修</td><td>谷川</td><td>2026/01/26 18:25:41</td></tr><tr class='has-issue'><td>10</td><td>ブラオ高槻</td><td class='room-col'>308</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>エアコンダクトカバー隙間あり、ドアクローザー固定ビス外れ</td><td>谷川</td><td>2026/01/26 18:27:40</td></tr><tr><td>11</td><td>ラ ヴィ クレール コソベ</td><td class='room-col'>206</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/01/27 16:28:52</td></tr><tr><td>12</td><td>ガルリ高槻</td><td class='room-col'>203</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/01/27 18:05:15</td></tr><tr><td>13</td><td>メゾンヴェール月見町Ⅰ</td><td class='room-col'>101</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/01/28 11:16:27</td></tr><tr class='has-issue score-2'><td>14</td><td>ホワイティ18</td><td class='room-col'>301</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>トイレのドアノブが空回りしており、正常に作動していない状態でした。また、浴室入口の木枠は塗装の剥がれが大きく進んでいる状況でした。</td><td>久保</td><td>2026/02/05 09:24:56</td></tr><tr><td>15</td><td>Ａｒｔ２１</td><td class='room-col'>308</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/02/06 09:49:24</td></tr><tr><td>16</td><td>Ａｒｔ２１</td><td class='room-col'>305</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/02/08 17:44:39</td></tr><tr><td>17</td><td>ソキウス山手町</td><td class='room-col'>308</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/02/10 15:28:14</td></tr><tr><td>18</td><td>Lago Primavera KOSOBE</td><td class='room-col'>208</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/02/12 10:26:52</td></tr><tr><td>19</td><td>Lago Primavera KOSOBE</td><td class='room-col'>408</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/02/12 10:27:37</td></tr><tr class='has-issue'><td>20</td><td>ShaMaison Forena</td><td class='room-col'>303</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>キッチン横クロスの油汚れ点在</td><td>谷川</td><td>2026/02/16 10:08:33</td></tr><tr><td>21</td><td>＆Space山手町</td><td class='room-col'>2</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/02/16 13:09:35</td></tr><tr><td>22</td><td>パラッツォ</td><td class='room-col'>403</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/02/17 12:14:35</td></tr><tr><td>23</td><td>ホーミーレジデンス</td><td class='room-col'>302</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/02/18 11:44:30</td></tr><tr class='has-issue'><td>24</td><td>レーベンハイム</td><td class='room-col'>407</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>玄関扉の建付不良（蝶番固定ビスの緩み</td><td>谷川</td><td>2026/02/22 10:12:54</td></tr><tr class='has-issue'><td>25</td><td>リュミエール北園</td><td class='room-col'>206</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>カーテンレールがたつき、シャワーカラン切り替え弁交換、浴室コーキングカビ補修</td><td>谷川</td><td>2026/02/22 13:34:18</td></tr><tr><td>26</td><td>彩都シオン</td><td class='room-col'>203</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/02/23 14:31:14</td></tr><tr><td>27</td><td>グランヴァレー彩都</td><td class='room-col'>305</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/02/23 16:34:22</td></tr><tr><td>28</td><td>Ｗｅｓｔ　ＡＭＡ</td><td class='room-col'>206</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/02/28 18:17:01</td></tr><tr><td>29</td><td>ユニバーサルコート</td><td class='room-col'>203</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/03/02 11:36:34</td></tr><tr class='has-issue'><td>30</td><td>リュミエール北園</td><td class='room-col'>208</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>巾木浮き数カ所あり</td><td>谷川</td><td>2026/03/06 09:55:46</td></tr><tr><td>31</td><td>ソキウス山手町</td><td class='room-col'>102</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/03/07 18:19:45</td></tr><tr><td>32</td><td>ドームイバロード</td><td class='room-col'>202</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/03/09 14:28:19</td></tr><tr><td>33</td><td>ドームイバロード</td><td class='room-col'>306</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/03/09 14:29:02</td></tr><tr class='has-issue'><td>34</td><td>サウザンドマイルズアーク</td><td class='room-col'>501</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>先に洗いが入ってリフォームした後の清掃が無かったので、ホコリや粉が広範囲で落ちていた</td><td>久保</td><td>2026/03/09 18:38:36</td></tr><tr class='has-issue'><td>35</td><td>ガルリ高槻</td><td class='room-col'>103</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>洗面台排水不良ゴミ詰まり</td><td>谷川</td><td>2026/03/10 11:50:26</td></tr><tr class='has-issue'><td>36</td><td>ガルリ高槻</td><td class='room-col'>205</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>巾木が全体的に浮いている</td><td>谷川</td><td>2026/03/10 11:51:39</td></tr><tr class='has-issue'><td>37</td><td>サウザンドマイルズアーク</td><td class='room-col'>613</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>リフォーム後のチリが散乱していた。</td><td>久保</td><td>2026/03/11 18:57:07</td></tr><tr><td>38</td><td>ノイレーベン古曽部</td><td class='room-col'>311</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/03/12 10:02:27</td></tr><tr><td>39</td><td>＆Space茨木</td><td class='room-col'>8</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/03/12 13:30:11</td></tr><tr><td>40</td><td>＆Space茨木</td><td class='room-col'>7</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/03/12 14:44:12</td></tr><tr><td>41</td><td>Ａｒｔ２１</td><td class='room-col'>303</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/03/13 08:10:58</td></tr><tr><td>42</td><td>グランヴァレー彩都</td><td class='room-col'>504</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/03/13 13:51:51</td></tr><tr class='has-issue'><td>43</td><td>グランヴァレー彩都</td><td class='room-col'>412</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>居室巾木浮き、天井クロス浮き</td><td>谷川</td><td>2026/03/13 15:00:38</td></tr><tr><td>44</td><td>ノイレーベン古曽部</td><td class='room-col'>308</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/03/16 09:21:11</td></tr><tr><td>45</td><td>ブラオ高槻</td><td class='room-col'>302</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/03/16 09:40:00</td></tr><tr><td>46</td><td>フィオーレ南平台</td><td class='room-col'>303</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/03/16 12:09:06</td></tr><tr><td>47</td><td>ユニバーサルコート</td><td class='room-col'>101</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/03/16 15:27:06</td></tr><tr><td>48</td><td>ユニバーサルコート</td><td class='room-col'>103</td><td><span class='rating-badge badge-5'>5</span></td><td class='issue-col'>-</td><td>谷川</td><td>2026/03/16 15:34:44</td></tr><tr><td>49</td><td>ホワイティ18</td><td class='room-col'>206</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>久保</td><td>2026/03/16 21:03:32</td></tr></tbody></table></div></div><div class="collapse-actions"><button type="button" class="collapse-btn show-all-btn">全件を見る</button><button type="button" class="collapse-btn close-all-btn is-hidden">閉じる</button></div></div>
+
+    <h2>6. 指摘事項一覧</h2>
+    <div class='table-wrap'><table><thead><tr><th>No</th><th>物件名</th><th>号室</th><th>評価</th><th>問題点</th><th>担当者</th><th>タイムスタンプ</th></tr></thead><tbody><tr class='has-issue score-2'><td>1</td><td>ホワイティ18</td><td class='room-col'>301</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>トイレのドアノブが空回りしており、正常に作動していない状態でした。また、浴室入口の木枠は塗装の剥がれが大きく進んでいる状況でした。</td><td>久保</td><td>2026/02/05 09:24:56</td></tr><tr class='has-issue'><td>2</td><td>ブラオ高槻</td><td class='room-col'>308</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>エアコンダクトカバー隙間あり、ドアクローザー固定ビス外れ</td><td>谷川</td><td>2026/01/26 18:27:40</td></tr><tr class='has-issue'><td>3</td><td>リュミエール北園</td><td class='room-col'>206</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>カーテンレールがたつき、シャワーカラン切り替え弁交換、浴室コーキングカビ補修</td><td>谷川</td><td>2026/02/22 13:34:18</td></tr><tr class='has-issue'><td>4</td><td>サウザンドマイルズアーク</td><td class='room-col'>501</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>先に洗いが入ってリフォームした後の清掃が無かったので、ホコリや粉が広範囲で落ちていた</td><td>久保</td><td>2026/03/09 18:38:36</td></tr><tr class='has-issue'><td>5</td><td>ガルリ高槻</td><td class='room-col'>205</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>巾木が全体的に浮いている</td><td>谷川</td><td>2026/03/10 11:51:39</td></tr><tr class='has-issue'><td>6</td><td>サウザンドマイルズアーク</td><td class='room-col'>613</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>リフォーム後のチリが散乱していた。</td><td>久保</td><td>2026/03/11 18:57:07</td></tr><tr class='has-issue'><td>7</td><td>グランヴァレー彩都</td><td class='room-col'>412</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>居室巾木浮き、天井クロス浮き</td><td>谷川</td><td>2026/03/13 15:00:38</td></tr><tr class='has-issue'><td>8</td><td>メゾンヴェール月見町Ⅱ</td><td class='room-col'>6</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>台所水栓の付け根から漏水あり</td><td>谷川</td><td>2026/01/16 10:20:47</td></tr><tr class='has-issue'><td>9</td><td>ブラオ高槻</td><td class='room-col'>210</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>エアコン室内ダクトカバー隙間補修</td><td>谷川</td><td>2026/01/26 18:25:41</td></tr><tr class='has-issue'><td>10</td><td>ShaMaison Forena</td><td class='room-col'>303</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>キッチン横クロスの油汚れ点在</td><td>谷川</td><td>2026/02/16 10:08:33</td></tr><tr class='has-issue'><td>11</td><td>レーベンハイム</td><td class='room-col'>407</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>玄関扉の建付不良（蝶番固定ビスの緩み</td><td>谷川</td><td>2026/02/22 10:12:54</td></tr><tr class='has-issue'><td>12</td><td>リュミエール北園</td><td class='room-col'>208</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>巾木浮き数カ所あり</td><td>谷川</td><td>2026/03/06 09:55:46</td></tr><tr class='has-issue'><td>13</td><td>ガルリ高槻</td><td class='room-col'>103</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>洗面台排水不良ゴミ詰まり</td><td>谷川</td><td>2026/03/10 11:50:26</td></tr></tbody></table></div>
+
+    <h2>7. 物件別分析</h2>
+    <div class='table-wrap'><table><thead><tr><th>物件名</th><th>件数</th><th>低評価件数</th></tr></thead><tbody><tr><td>ホワイティ18</td><td>2</td><td>1</td></tr><tr><td>グランヴァレー彩都</td><td>4</td><td>0</td></tr><tr><td>ガルリ高槻</td><td>3</td><td>0</td></tr><tr><td>ソキウス山手町</td><td>3</td><td>0</td></tr><tr><td>ドームイバロード</td><td>3</td><td>0</td></tr><tr><td>ノイレーベン古曽部</td><td>3</td><td>0</td></tr><tr><td>ブラオ高槻</td><td>3</td><td>0</td></tr><tr><td>ユニバーサルコート</td><td>3</td><td>0</td></tr><tr><td>Ａｒｔ２１</td><td>3</td><td>0</td></tr><tr><td>Lago Primavera KOSOBE</td><td>2</td><td>0</td></tr><tr><td>サウザンドマイルズアーク</td><td>2</td><td>0</td></tr><tr><td>フィオーレ南平台</td><td>2</td><td>0</td></tr><tr><td>リュミエール北園</td><td>2</td><td>0</td></tr><tr><td>＆Space茨木</td><td>2</td><td>0</td></tr><tr><td>ShaMaison Forena</td><td>1</td><td>0</td></tr><tr><td>パラッツォ</td><td>1</td><td>0</td></tr><tr><td>ホーミーレジデンス</td><td>1</td><td>0</td></tr><tr><td>メゾンヴェール月見町Ⅰ</td><td>1</td><td>0</td></tr><tr><td>メゾンヴェール月見町Ⅱ</td><td>1</td><td>0</td></tr><tr><td>ラ ヴィ クレール コソベ</td><td>1</td><td>0</td></tr><tr><td>レーベンハイム</td><td>1</td><td>0</td></tr><tr><td>彩都シオン</td><td>1</td><td>0</td></tr><tr><td>第２高槻ハイム</td><td>1</td><td>0</td></tr><tr><td>＆Space山手町</td><td>1</td><td>0</td></tr><tr><td>２２２番館</td><td>1</td><td>0</td></tr><tr><td>Ｗｅｓｔ　ＡＭＡ</td><td>1</td><td>0</td></tr></tbody></table></div>
+
+    <h2>8. 主な指摘内容</h2>
+    <div class='table-wrap'><table><thead><tr><th>不具合内容</th><th>件数</th></tr></thead><tbody><tr><td>建付け不良・作動不良</td><td>3</td></tr><tr><td>清掃不十分・汚れ残り</td><td>3</td></tr><tr><td>浮き</td><td>2</td></tr><tr><td>隙間</td><td>2</td></tr><tr><td>剥がれ・めくれ</td><td>1</td></tr><tr><td>汚れ・美観不良</td><td>1</td></tr><tr><td>水漏れ・漏水</td><td>1</td></tr><tr><td>緩み</td><td>1</td></tr><tr><td>排水詰まり・流れ不良</td><td>1</td></tr></tbody></table></div>
+
+    <h2>9. 主な指摘部位</h2>
+    <div class='table-wrap'><table><thead><tr><th>対象部位</th><th>件数</th></tr></thead><tbody><tr><td>建具・扉まわり</td><td>4</td></tr><tr><td>エアコン</td><td>2</td></tr><tr><td>クロス・壁紙</td><td>2</td></tr><tr><td>浴室・風呂まわり</td><td>2</td></tr><tr><td>キッチンまわり</td><td>1</td></tr><tr><td>トイレ</td><td>1</td></tr><tr><td>塗装</td><td>1</td></tr><tr><td>排水まわり</td><td>1</td></tr><tr><td>木部</td><td>1</td></tr><tr><td>水栓・蛇口</td><td>1</td></tr><tr><td>洗面まわり</td><td>1</td></tr></tbody></table></div>
+
+    <h2>10. 主な指摘傾向</h2>
+    <div class="subnote">自由記述コメントをもとに整理した参考集計です。</div>
+    <div class='table-wrap'><table><thead><tr><th>対象部位</th><th>不具合内容</th><th>件数</th></tr></thead><tbody><tr><td>エアコン</td><td>隙間</td><td>2</td></tr><tr><td>建具</td><td>不良</td><td>2</td></tr><tr><td>キッチン</td><td>汚れ</td><td>1</td></tr><tr><td>クロス</td><td>汚れ</td><td>1</td></tr><tr><td>クロス</td><td>浮き</td><td>1</td></tr><tr><td>トイレ</td><td>不良</td><td>1</td></tr><tr><td>塗装</td><td>剥がれ</td><td>1</td></tr><tr><td>建具</td><td>緩み</td><td>1</td></tr><tr><td>排水</td><td>不良</td><td>1</td></tr><tr><td>排水</td><td>清掃不足</td><td>1</td></tr><tr><td>排水</td><td>詰まり</td><td>1</td></tr><tr><td>木部</td><td>剥がれ</td><td>1</td></tr><tr><td>水栓</td><td>漏水</td><td>1</td></tr><tr><td>洗面</td><td>不良</td><td>1</td></tr><tr><td>洗面</td><td>清掃不足</td><td>1</td></tr><tr><td>洗面</td><td>詰まり</td><td>1</td></tr><tr><td>浴室</td><td>剥がれ</td><td>1</td></tr></tbody></table></div>
+
+    <h2>11. 低評価案件の主な指摘内容</h2>
+    <div class='table-wrap'><table><thead><tr><th>不具合内容</th><th>件数</th></tr></thead><tbody><tr><td>建付け不良・作動不良</td><td>1</td></tr><tr><td>剥がれ・めくれ</td><td>1</td></tr></tbody></table></div>
+
+    <h2>12. 低評価案件の主な指摘部位</h2>
+    <div class='table-wrap'><table><thead><tr><th>対象部位</th><th>件数</th></tr></thead><tbody><tr><td>トイレ</td><td>1</td></tr><tr><td>塗装</td><td>1</td></tr><tr><td>建具・扉まわり</td><td>1</td></tr><tr><td>木部</td><td>1</td></tr><tr><td>浴室・風呂まわり</td><td>1</td></tr></tbody></table></div>
+
+    
+
+    
+
+    
+
+    <h2>13. 備考</h2>
+    <div class="final">本レポートは集計結果をもとに作成しています。</div>
+
+    <h2>評価基準</h2>
+    <div class="criteria-card">
+      <div class="criteria-grid">
+        <div class="criteria-item"><strong>★5</strong>非常に良好（仕上がり・対応とも高水準）</div>
+        <div class="criteria-item"><strong>★4</strong>概ね良好（軽微な改善余地あり）</div>
+        <div class="criteria-item"><strong>★3</strong>標準（一定の改善検討が必要）</div>
+        <div class="criteria-item"><strong>★2</strong>要改善（是正対応を優先）</div>
+        <div class="criteria-item"><strong>★1</strong>重大な改善要（早急な是正が必要）</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var root = document.querySelector('[data-collapse="all-records"]');
+      if (!root) return;
+      var preview = root.querySelector('.collapse-preview');
+      var full = root.querySelector('.collapse-full');
+      var showBtn = root.querySelector('.show-all-btn');
+      var closeBtn = root.querySelector('.close-all-btn');
+      if (!preview || !full || !showBtn || !closeBtn) return;
+
+      showBtn.addEventListener('click', function () {
+        preview.classList.add('is-hidden');
+        full.classList.remove('is-hidden');
+        showBtn.classList.add('is-hidden');
+        closeBtn.classList.remove('is-hidden');
+      });
+
+      closeBtn.addEventListener('click', function () {
+        full.classList.add('is-hidden');
+        preview.classList.remove('is-hidden');
+        closeBtn.classList.add('is-hidden');
+        showBtn.classList.remove('is-hidden');
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品質レポート_株式会社ケア・リビング</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card: #ffffff;
+      --line: #e2e8f0;
+      --text: #1e293b;
+      --muted: #64748b;
+      --head: #edf2f7;
+      --issue: #fff8f4;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --shadow-soft: 0 4px 14px rgba(15, 23, 42, 0.06);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 26px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      line-height: 1.5;
+    }
+    .container { max-width: 1120px; margin: 0 auto; }
+    .top-hero {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: linear-gradient(135deg, #e8f1ff 0%, #f7fbff 48%, #ffffff 100%);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 16px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: 0.01em;
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .hero-side {
+      display: grid;
+      gap: 8px;
+    }
+    .hero-info-card {
+      border: 1px solid #dbeafe;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+    .hero-info-card .label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+    .hero-info-card .value {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      word-break: break-word;
+    }
+    .quality-pill {
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .ql-good { color: #166534; background: #dcfce7; border-color: #86efac; }
+    .ql-mid { color: #1e40af; background: #dbeafe; border-color: #93c5fd; }
+    .ql-needs { color: #9a3412; background: #ffedd5; border-color: #fdba74; }
+    .ql-default { color: #334155; background: #f1f5f9; border-color: #cbd5e1; }
+    h2 {
+      margin: 40px 0 18px;
+      font-size: 21px;
+      border-left: 6px solid var(--accent);
+      padding-left: 12px;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .section-tag {
+      display: inline-block;
+      font-size: 11px;
+      line-height: 1;
+      color: #9a3412;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 999px;
+      padding: 4px 8px;
+      white-space: nowrap;
+    }
+    .meta { color: var(--muted); margin-bottom: 14px; }
+    .subnote { color: var(--muted); font-size: 12px; margin: -4px 0 10px 0; }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 12px;
+    }
+    .summary-box {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+      white-space: pre-wrap;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03);
+    }
+    .summary-box .small { color: var(--muted); font-size: 12px; margin-bottom: 6px; }
+    .ai-box {
+      background: #f7fbff;
+      border: 1px solid #dbeafe;
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: 0 1px 3px rgba(37, 99, 235, 0.06);
+    }
+    .ai-text-box { margin-top: 12px; white-space: pre-wrap; }
+    .ai-message-box {
+      background: #f0f9ff;
+      border-color: #bfdbfe;
+      white-space: pre-wrap;
+    }
+    .ai-box ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .ai-box li {
+      margin: 4px 0;
+    }
+    .collapse-wrap { margin-top: 4px; }
+    .collapse-actions {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+    .collapse-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      border-radius: 10px;
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .collapse-btn:hover { background: #f8fafc; }
+    .is-hidden { display: none; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(130px, 1fr));
+      gap: 12px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 3px;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
+    }
+    .card .label { font-size: 12px; color: var(--muted); }
+    .card .value { font-size: 32px; font-weight: 800; letter-spacing: -0.01em; margin-top: 8px; line-height: 1.05; }
+    .rating-chart-box {
+      margin-bottom: 10px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .rating-bar-row {
+      display: grid;
+      grid-template-columns: 52px 1fr 118px;
+      gap: 10px;
+      align-items: center;
+      margin: 6px 0;
+    }
+    .rating-bar-label {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: right;
+    }
+    .rating-bar-track {
+      height: 10px;
+      background: #eaf1fb;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .rating-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
+      border-radius: 999px;
+    }
+    .rating-bar-value {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: right;
+      white-space: nowrap;
+    }
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 760px; }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 11px 12px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      word-break: break-word;
+    }
+    th {
+      background: var(--head);
+      font-weight: 700;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      box-shadow: inset 0 -1px 0 rgba(148, 163, 184, 0.35), 0 1px 2px rgba(15, 23, 42, 0.06);
+    }
+    tbody tr:nth-child(odd) td {
+      background: #fcfdff;
+    }
+    tbody tr:hover td {
+      background: var(--accent-soft);
+    }
+    tr.has-issue td { background: var(--issue); }
+    tr.score-2 td { background: #fff1e8; }
+    tr.score-1 td { background: #ffe7e7; }
+    .rating-badge {
+      display: inline-block;
+      min-width: 40px;
+      text-align: center;
+      color: #fff;
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+    .badge-5 { background: #16a34a; }
+    .badge-4 { background: #2563eb; }
+    .badge-3 { background: #6b7280; }
+    .badge-2 { background: #ea580c; }
+    .badge-1 { background: #dc2626; }
+    .badge-na { background: #9ca3af; }
+    td.issue-col { min-width: 380px; }
+    td.room-col { min-width: 120px; }
+    .final {
+      border-top: 1px solid var(--line);
+      margin-top: 28px;
+      padding-top: 12px;
+      color: var(--muted);
+      white-space: pre-wrap;
+    }
+    .criteria-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #f8fafc;
+      padding: 12px 14px;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03);
+    }
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(140px, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .criteria-item {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 8px;
+      background: #fff;
+      font-size: 12px;
+      color: #334155;
+    }
+    .criteria-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #0f172a;
+    }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .summary-grid { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
+      .criteria-grid { grid-template-columns: 1fr; }
+    }
+    @media print {
+      @page { size: A4; margin: 12mm; }
+      body { padding: 0; font-size: 11pt; }
+      .container { max-width: none; }
+      .top-hero, .card, .summary-box, .table-wrap {
+        box-shadow: none;
+      }
+      tbody tr:nth-child(odd) td,
+      tbody tr:hover td {
+        background: transparent;
+      }
+      .table-wrap { overflow: visible; }
+      table { min-width: 0; }
+      h2 { break-after: avoid; }
+      .card, .summary-box, .table-wrap { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-hero">
+      <div class="hero-grid">
+        <div class="hero-main">
+          <div class="hero-head">
+            <h1>原状回復工事 品質レポート</h1>
+            <span class="quality-pill ql-needs">品質レベル: 要改善</span>
+          </div>
+          <div class="hero-meta">
+            <span>社外送付版</span>
+          </div>
+        </div>
+        <div class="hero-side">
+          <div class="hero-info-card">
+            <div class="label">対象業者</div>
+            <div class="value">株式会社ケア・リビング</div>
+          </div>
+          <div class="hero-info-card">
+            <div class="label">作成日</div>
+            <div class="value">2026/03/17 23:32:42</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="meta">業者向け品質レポート</div>
+
+    <h2>1. 概要コメント</h2>
+    <div class="summary-grid">
+      <div class="summary-box">
+        <div class="small">概要コメント</div>
+        株式会社ケア・リビング の評価は平均 3.14 点、有効件数 117 件、是正対象 17 件です。
+      </div>
+      <div class="summary-box">
+        <div class="small">quality_level</div>
+        <strong>要改善</strong>
+      </div>
+    </div>
+    <h2>総評</h2><div class="ai-box ai-text-box"><div class="small">総評</div>株式会社ケア・リビングは、総件数104件・平均評価3.13の実績に対し、是正対象件数が15件発生しており、全体として一定の対応実績はあるものの、品質面では改善余地が残る状況です。特に汚れ、漏水、清掃不足が主な不具合として見られ、建具・床・キッチンといった主要部位での指摘が目立っています。低評価案件でも同様の不具合傾向が確認されており、同じ課題が評価低下に直結していると考えられます。</div>
+
+    <h2>2. 概要</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="label">総件数</div>
+        <div class="value">117</div>
+      </div>
+      <div class="card">
+        <div class="label">平均評価</div>
+        <div class="value">3.14</div>
+      </div>
+      <div class="card">
+        <div class="label">是正対象件数</div>
+        <div class="value">17</div>
+      </div>
+      <div class="card">
+        <div class="label">★4以上比率</div>
+        <div class="value">34.19%</div>
+      </div>
+      <div class="card">
+        <div class="label">品質レベル</div>
+        <div class="value">要改善</div>
+      </div>
+    </div>
+
+    <h2>3. 評価分布</h2>
+    <div class="rating-chart-box">
+      <div class="rating-bar-row"><div class="rating-bar-label">★5</div><div class="rating-bar-track"><div class="rating-bar-fill" style="width: 0.0%;"></div></div><div class="rating-bar-value">0件 / 0.0%</div></div><div class="rating-bar-row"><div class="rating-bar-label">★4</div><div class="rating-bar-track"><div class="rating-bar-fill" style="width: 34.19%;"></div></div><div class="rating-bar-value">40件 / 34.19%</div></div><div class="rating-bar-row"><div class="rating-bar-label">★3</div><div class="rating-bar-track"><div class="rating-bar-fill" style="width: 51.28%;"></div></div><div class="rating-bar-value">60件 / 51.28%</div></div><div class="rating-bar-row"><div class="rating-bar-label">★2</div><div class="rating-bar-track"><div class="rating-bar-fill" style="width: 8.55%;"></div></div><div class="rating-bar-value">10件 / 8.55%</div></div><div class="rating-bar-row"><div class="rating-bar-label">★1</div><div class="rating-bar-track"><div class="rating-bar-fill" style="width: 5.98%;"></div></div><div class="rating-bar-value">7件 / 5.98%</div></div>
+    </div>
+    <div class='table-wrap'><table><thead><tr><th>評価</th><th>件数</th><th>構成比(%)</th></tr></thead><tbody><tr><td>5</td><td>0</td><td>0.0</td></tr><tr><td>4</td><td>40</td><td>34.19</td></tr><tr><td>3</td><td>60</td><td>51.28</td></tr><tr><td>2</td><td>10</td><td>8.55</td></tr><tr><td>1</td><td>7</td><td>5.98</td></tr></tbody></table></div>
+
+    <h2 class="section-title"><span>4. 是正対象一覧（評価2以下）</span><span class="section-tag">要確認</span></h2>
+    <div class='table-wrap'><table><thead><tr><th>No</th><th>物件名</th><th>号室</th><th>評価</th><th>問題点</th><th>担当者</th><th>タイムスタンプ</th></tr></thead><tbody><tr class='has-issue score-2'><td>1</td><td>ブルズアイ</td><td class='room-col'>404</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>クロス張替え後にエアコンリモコンケースを付けずに外したままでした。</td><td>久保</td><td>2026/02/20 18:46:52</td></tr><tr class='has-issue score-1'><td>2</td><td>グランデアステール芦屋</td><td class='room-col'>614</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>リフォーム内容とかどうでも良くなるぐらい汚かったです。ワックス扉にかかって放置で完了？その他拭き漏れ多数あり。
+金取るレベルじゃ無いこのクオリティを兵庫エリアでやられるの相当しんどいです</td><td>阿部</td><td>2026/02/20 16:00:22</td></tr><tr class='has-issue score-2'><td>3</td><td>ブルズアイ</td><td class='room-col'>602</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>洗面化粧台の交換後のクロスと床の補修まで仕上げてほしかった。洗いが入っていなかったので明日の入居に間に合わない可能性もあったので気をつけていただきたいです。</td><td>久保</td><td>2026/02/13 21:15:38</td></tr><tr class='has-issue score-1'><td>4</td><td>カームヒルズⅡ</td><td class='room-col'>207</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>期間が開いていたからか、虫の死骸や蜘蛛の巣が多数あった。浴槽は白泡現象がひどく、隅が減り込む形で穴になっていた。</td><td>平井</td><td>2026/02/06 16:43:34</td></tr><tr class='has-issue score-1'><td>5</td><td>ソサエティ山手</td><td class='room-col'>401</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>浴室とキッチンの水栓で水漏れが見られた箇所がありました。また、カーテンレールのランナーに不良が複数あり、房掛けも割れた状態になっていました。念のためお伝えいたします。</td><td>久保</td><td>2026/02/04 16:10:58</td></tr><tr class='has-issue score-1'><td>6</td><td>天神橋ハイム</td><td class='room-col'>301</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>手直し依頼</td><td>山本</td><td>2026/01/26 12:34:49</td></tr><tr class='has-issue score-2'><td>7</td><td>ソサエティ山手</td><td class='room-col'>103</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>キッチンおよび浴室の水栓からわずかに水漏れが見られます。また、キッチン下の化粧板について、固定用のビスが不足しているようでした。さらに、カーテンの房掛けは両面テープが一部剥がれかけており、固定が弱くなっている印象を受けました。</td><td>久保</td><td>2026/01/21 14:35:32</td></tr><tr class='has-issue score-2'><td>8</td><td>みどり之園</td><td class='room-col'>102</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>ヤニ取れていない</td><td>澤岡</td><td>2026/01/20 07:35:18</td></tr><tr class='has-issue score-2'><td>9</td><td>ヒルサイドハウス源</td><td class='room-col'>301</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>張り替えた洗面所床CFに糊のような汚れあり。窓枠小傷未修繕。</td><td>久保</td><td>2026/02/22 15:58:14</td></tr><tr class='has-issue score-2'><td>10</td><td>メゾンラフィネ</td><td class='room-col'>101</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>キッチン周り油汚れ、リビング髪の毛付着</td><td>澤岡</td><td>2026/03/13 08:09:50</td></tr><tr class='has-issue score-2'><td>11</td><td>ブルズアイ</td><td class='room-col'>503</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>居室の床がチリが多く、居室扉の丁番が大きい音が鳴っていた。見積に入っていてもいなくてもあのレベルの音は見逃さないでほしい。</td><td>久保</td><td>2026/03/13 16:41:16</td></tr><tr class='has-issue score-1'><td>12</td><td>ヒルバレー阪口</td><td class='room-col'>303</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>清掃の手直しにかかる時間、負担大</td><td>山本</td><td>2026/03/14 14:53:51</td></tr><tr class='has-issue score-2'><td>13</td><td>コート関大前</td><td class='room-col'>C112</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>網戸破れありました。</td><td>山岸</td><td>2026/03/14 16:26:05</td></tr><tr class='has-issue score-1'><td>14</td><td>ヒルバレー阪口</td><td class='room-col'>301</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>清掃の手直し箇所多数</td><td>山本</td><td>2026/03/14 16:32:24</td></tr><tr class='has-issue score-2'><td>15</td><td>ブルズアイ</td><td class='room-col'>206</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>ウェットシートで床を拭いたら昨日洗いが終わったと思えないほど汚れた</td><td>久保</td><td>2026/03/14 19:52:44</td></tr><tr class='has-issue score-2'><td>16</td><td>天神橋ハイム</td><td class='room-col'>602</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>ペットの毛が室内中に残っている</td><td>山本</td><td>2026/03/16 10:35:27</td></tr><tr class='has-issue score-1'><td>17</td><td>ヒルバレー阪口</td><td class='room-col'>103</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>清掃の手直し多数</td><td>山本</td><td>2026/03/17 17:37:52</td></tr></tbody></table></div>
+
+    <h2>5. 全件一覧（全117件）</h2>
+    <div class="subnote">詳細確認用として全件一覧を掲載しています。必要に応じてご確認ください。</div>
+    <div class="collapse-wrap" data-collapse="all-records"><div class="collapse-preview"><div class='table-wrap'><table><thead><tr><th>No</th><th>物件名</th><th>号室</th><th>評価</th><th>問題点</th><th>担当者</th><th>タイムスタンプ</th></tr></thead><tbody><tr class='has-issue'><td>1</td><td>平和ビル</td><td class='room-col'>303</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>クローゼット内未清掃でした。
+ある程度のクオリティ確保お願い致します。</td><td>阿部</td><td>2026/01/07 13:48:33</td></tr><tr class='has-issue'><td>2</td><td>コンセール裕恵</td><td class='room-col'>505</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>排水カゴ無し。ハウスクリーニング悪し</td><td>阿部</td><td>2026/01/09 12:21:49</td></tr><tr><td>3</td><td>ＤＯ・Ｚ</td><td class='room-col'>503</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/01/09 15:35:03</td></tr><tr><td>4</td><td>メゾンラフィネ</td><td class='room-col'>105</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/01/12 18:30:49</td></tr><tr><td>5</td><td>ドルチェ山手壱番館</td><td class='room-col'>101</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/01/12 18:34:02</td></tr><tr><td>6</td><td>グランデアステール芦屋</td><td class='room-col'>516</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/01/13 11:41:28</td></tr><tr><td>7</td><td>カーサスペリオーレⅡ</td><td class='room-col'>401</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/01/14 18:53:59</td></tr><tr><td>8</td><td>カーサスペリオーレⅡ</td><td class='room-col'>407</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/01/14 18:54:43</td></tr><tr><td>9</td><td>LANI　TOYONAKA</td><td class='room-col'>309</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/01/16 11:13:27</td></tr><tr><td>10</td><td>ベルエアー</td><td class='room-col'>609</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>山本</td><td>2026/01/16 16:42:11</td></tr></tbody></table></div></div><div class="collapse-full is-hidden"><div class='table-wrap'><table><thead><tr><th>No</th><th>物件名</th><th>号室</th><th>評価</th><th>問題点</th><th>担当者</th><th>タイムスタンプ</th></tr></thead><tbody><tr class='has-issue'><td>1</td><td>平和ビル</td><td class='room-col'>303</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>クローゼット内未清掃でした。
+ある程度のクオリティ確保お願い致します。</td><td>阿部</td><td>2026/01/07 13:48:33</td></tr><tr class='has-issue'><td>2</td><td>コンセール裕恵</td><td class='room-col'>505</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>排水カゴ無し。ハウスクリーニング悪し</td><td>阿部</td><td>2026/01/09 12:21:49</td></tr><tr><td>3</td><td>ＤＯ・Ｚ</td><td class='room-col'>503</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/01/09 15:35:03</td></tr><tr><td>4</td><td>メゾンラフィネ</td><td class='room-col'>105</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/01/12 18:30:49</td></tr><tr><td>5</td><td>ドルチェ山手壱番館</td><td class='room-col'>101</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/01/12 18:34:02</td></tr><tr><td>6</td><td>グランデアステール芦屋</td><td class='room-col'>516</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/01/13 11:41:28</td></tr><tr><td>7</td><td>カーサスペリオーレⅡ</td><td class='room-col'>401</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/01/14 18:53:59</td></tr><tr><td>8</td><td>カーサスペリオーレⅡ</td><td class='room-col'>407</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/01/14 18:54:43</td></tr><tr><td>9</td><td>LANI　TOYONAKA</td><td class='room-col'>309</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/01/16 11:13:27</td></tr><tr><td>10</td><td>ベルエアー</td><td class='room-col'>609</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>山本</td><td>2026/01/16 16:42:11</td></tr><tr><td>11</td><td>Ｍ＆Ｍウメダイースト</td><td class='room-col'>601</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>山本</td><td>2026/01/19 16:48:40</td></tr><tr class='has-issue'><td>12</td><td>コート関大前</td><td class='room-col'>C115</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>洗いの業者が忘れていた為、完工日よりも遅れてしまっていました。</td><td>山岸</td><td>2026/01/19 18:09:02</td></tr><tr class='has-issue score-2'><td>13</td><td>みどり之園</td><td class='room-col'>102</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>ヤニ取れていない</td><td>澤岡</td><td>2026/01/20 07:35:18</td></tr><tr><td>14</td><td>みどり之園</td><td class='room-col'>101</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/01/20 07:35:52</td></tr><tr><td>15</td><td>みどり之園</td><td class='room-col'>103</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/01/20 07:36:31</td></tr><tr><td>16</td><td>みどり之園</td><td class='room-col'>215</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/01/20 07:37:22</td></tr><tr><td>17</td><td>みどり之園</td><td class='room-col'>312</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/01/20 07:37:53</td></tr><tr><td>18</td><td>みどり之園</td><td class='room-col'>115</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/01/20 07:38:31</td></tr><tr><td>19</td><td>サニーハイツⅠ</td><td class='room-col'>202</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>山岸</td><td>2026/01/20 09:32:55</td></tr><tr><td>20</td><td>大阪謄写館ビル</td><td class='room-col'>601</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>山本</td><td>2026/01/21 11:57:54</td></tr><tr class='has-issue score-2'><td>21</td><td>ソサエティ山手</td><td class='room-col'>103</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>キッチンおよび浴室の水栓からわずかに水漏れが見られます。また、キッチン下の化粧板について、固定用のビスが不足しているようでした。さらに、カーテンの房掛けは両面テープが一部剥がれかけており、固定が弱くなっている印象を受けました。</td><td>久保</td><td>2026/01/21 14:35:32</td></tr><tr class='has-issue'><td>22</td><td>ソサエティ山手</td><td class='room-col'>105</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>風呂場の水栓の切替弁の不良でシャワーと蛇口から同時に水が出ていた。</td><td>久保</td><td>2026/01/21 16:47:29</td></tr><tr class='has-issue'><td>23</td><td>千里東壱番館</td><td class='room-col'>1A</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>キッチンのコーキング変色が酷かったです。</td><td>山岸</td><td>2026/01/23 17:45:56</td></tr><tr class='has-issue score-1'><td>24</td><td>天神橋ハイム</td><td class='room-col'>301</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>手直し依頼</td><td>山本</td><td>2026/01/26 12:34:49</td></tr><tr><td>25</td><td>グランデアステール芦屋</td><td class='room-col'>613</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/01/26 12:48:47</td></tr><tr><td>26</td><td>グランデアステール芦屋</td><td class='room-col'>201</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/01/26 13:15:08</td></tr><tr><td>27</td><td>コンセール裕恵</td><td class='room-col'>608</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/01/30 14:37:39</td></tr><tr class='has-issue'><td>28</td><td>ベルエアー</td><td class='room-col'>1011</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>清掃の手直しが多い。</td><td>山本</td><td>2026/02/02 13:10:11</td></tr><tr><td>29</td><td>ＣＲＵＭ－１</td><td class='room-col'>402</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/02/03 11:02:09</td></tr><tr><td>30</td><td>ＬＡＰＵＴＡ２１</td><td class='room-col'>303</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/02/03 12:04:05</td></tr><tr><td>31</td><td>アレルヤ</td><td class='room-col'>206</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/02/03 12:06:02</td></tr><tr class='has-issue'><td>32</td><td>フロンツォーネ</td><td class='room-col'>402</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>CFの施工が荒い
+クローゼット敷居部分清掃されていません。
+キッチンコーキングカビがひどい</td><td>阿部</td><td>2026/02/03 16:46:33</td></tr><tr class='has-issue score-1'><td>33</td><td>ソサエティ山手</td><td class='room-col'>401</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>浴室とキッチンの水栓で水漏れが見られた箇所がありました。また、カーテンレールのランナーに不良が複数あり、房掛けも割れた状態になっていました。念のためお伝えいたします。</td><td>久保</td><td>2026/02/04 16:10:58</td></tr><tr><td>34</td><td>メゾンセルクル</td><td class='room-col'>401</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/02/05 17:38:32</td></tr><tr><td>35</td><td>Ｃａｓａネッビア</td><td class='room-col'>107</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/02/05 17:41:51</td></tr><tr><td>36</td><td>エンリィ学生マンション</td><td class='room-col'>404</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/02/06 13:29:53</td></tr><tr class='has-issue score-1'><td>37</td><td>カームヒルズⅡ</td><td class='room-col'>207</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>期間が開いていたからか、虫の死骸や蜘蛛の巣が多数あった。浴槽は白泡現象がひどく、隅が減り込む形で穴になっていた。</td><td>平井</td><td>2026/02/06 16:43:34</td></tr><tr><td>38</td><td>ドルチェアネックス</td><td class='room-col'>205</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>山岸</td><td>2026/02/09 12:16:48</td></tr><tr><td>39</td><td>フェアリーフラッツ</td><td class='room-col'>203</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/02/09 18:07:35</td></tr><tr><td>40</td><td>フェアリーフラッツ</td><td class='room-col'>202</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/02/09 18:07:57</td></tr><tr class='has-issue'><td>41</td><td>コンセール愛宕山</td><td class='room-col'>207</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>クローゼット内　拭き残しあり</td><td>阿部</td><td>2026/02/10 10:46:39</td></tr><tr class='has-issue'><td>42</td><td>横山第１マンション</td><td class='room-col'>202</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>各所に毛髪類</td><td>山本</td><td>2026/02/10 11:59:27</td></tr><tr><td>43</td><td>ヒルバレー阪口</td><td class='room-col'>208</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>山岸</td><td>2026/02/10 13:31:25</td></tr><tr><td>44</td><td>Ｃａｓａネッビア</td><td class='room-col'>105</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/02/10 16:12:39</td></tr><tr><td>45</td><td>フェリス千里山</td><td class='room-col'>303</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/02/10 17:44:47</td></tr><tr><td>46</td><td>カームヒルズⅡ</td><td class='room-col'>202</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/02/10 17:45:50</td></tr><tr><td>47</td><td>Ｃａｓａネッビア</td><td class='room-col'>411</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/02/11 16:28:51</td></tr><tr><td>48</td><td>グラン藤</td><td class='room-col'>201</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/02/11 18:03:50</td></tr><tr><td>49</td><td>カームヒルズⅠ</td><td class='room-col'>101</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/02/12 18:03:41</td></tr><tr><td>50</td><td>グリーンコーポＹＡＹＯＩ</td><td class='room-col'>403</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>山本</td><td>2026/02/13 09:37:45</td></tr><tr class='has-issue score-2'><td>51</td><td>ブルズアイ</td><td class='room-col'>602</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>洗面化粧台の交換後のクロスと床の補修まで仕上げてほしかった。洗いが入っていなかったので明日の入居に間に合わない可能性もあったので気をつけていただきたいです。</td><td>久保</td><td>2026/02/13 21:15:38</td></tr><tr><td>52</td><td>ハイツ上ノ山</td><td class='room-col'>203</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>山岸</td><td>2026/02/16 15:49:15</td></tr><tr><td>53</td><td>ダイキハイム</td><td class='room-col'>205</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/02/17 12:42:36</td></tr><tr><td>54</td><td>カサ・デ・グラナダ</td><td class='room-col'>206</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>山岸</td><td>2026/02/17 16:57:28</td></tr><tr><td>55</td><td>カサ・デ・グラナダ</td><td class='room-col'>308</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>山岸</td><td>2026/02/18 18:04:50</td></tr><tr class='has-issue'><td>56</td><td>ヒルサイドハウス源</td><td class='room-col'>103</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>浴室の鏡前の棚について、清掃がされていない箇所がありました。また、目地にカビが残っている部分が見受けられましたので、念のためお伝えいたします。</td><td>久保</td><td>2026/02/18 18:54:26</td></tr><tr class='has-issue'><td>57</td><td>ヒルサイドハウス源</td><td class='room-col'>303</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>ワックスを施した床に、髪の毛が多く残っている箇所がありましたので、念のためお伝えいたします。</td><td>久保</td><td>2026/02/18 18:56:58</td></tr><tr><td>58</td><td>カーサスペリオーレⅠ</td><td class='room-col'>405</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/02/19 20:39:02</td></tr><tr><td>59</td><td>コンセルト片山</td><td class='room-col'>502</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/02/19 20:42:03</td></tr><tr class='has-issue score-1'><td>60</td><td>グランデアステール芦屋</td><td class='room-col'>614</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>リフォーム内容とかどうでも良くなるぐらい汚かったです。ワックス扉にかかって放置で完了？その他拭き漏れ多数あり。
+金取るレベルじゃ無いこのクオリティを兵庫エリアでやられるの相当しんどいです</td><td>阿部</td><td>2026/02/20 16:00:22</td></tr><tr><td>61</td><td>ヒルバレー阪口</td><td class='room-col'>401</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>山本</td><td>2026/02/20 17:03:08</td></tr><tr class='has-issue'><td>62</td><td>ブルズアイ</td><td class='room-col'>504</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>全体的に清掃不良。浴室カビと張り替えた洗面CFに汚れあり。</td><td>久保</td><td>2026/02/20 18:42:54</td></tr><tr class='has-issue score-2'><td>63</td><td>ブルズアイ</td><td class='room-col'>404</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>クロス張替え後にエアコンリモコンケースを付けずに外したままでした。</td><td>久保</td><td>2026/02/20 18:46:52</td></tr><tr class='has-issue score-2'><td>64</td><td>ヒルサイドハウス源</td><td class='room-col'>301</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>張り替えた洗面所床CFに糊のような汚れあり。窓枠小傷未修繕。</td><td>久保</td><td>2026/02/22 15:58:14</td></tr><tr class='has-issue'><td>65</td><td>ディアス山手Ⅲ</td><td class='room-col'>501</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>浴室の排水口の詰まりが原因で水を排水した際に溢れる状況を確認いたしました。清掃時にお気づきいただけた可能性もあるかと思いますので、今後のご参考までに共有いたします。現在は通貫作業により排水は正常に戻っております。引き続きよろしくお願いいたします。</td><td>久保</td><td>2026/02/22 16:11:43</td></tr><tr><td>66</td><td>ディアス山手Ⅲ</td><td class='room-col'>310</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>久保</td><td>2026/02/22 16:14:57</td></tr><tr><td>67</td><td>大阪謄写館ビル</td><td class='room-col'>405</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>山本</td><td>2026/02/23 18:14:52</td></tr><tr><td>68</td><td>メゾンセルクル</td><td class='room-col'>304</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/02/24 11:23:01</td></tr><tr><td>69</td><td>コンセール裕恵</td><td class='room-col'>504</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/02/24 13:53:54</td></tr><tr><td>70</td><td>ドルチェアネックス</td><td class='room-col'>103</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>山岸</td><td>2026/02/25 10:38:39</td></tr><tr class='has-issue'><td>71</td><td>コンセール愛宕山</td><td class='room-col'>208</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>間仕切りの扉建て付け不良でした。コンセール愛宕山で何軒かこの不具合あります。今回は蝶番起こしで直りましたが、直らない時も多いイメージですので退去時この辺りの確認もお願い致します。</td><td>阿部</td><td>2026/02/26 13:52:56</td></tr><tr><td>72</td><td>コンセール愛宕山</td><td class='room-col'>307</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/02/26 14:25:05</td></tr><tr><td>73</td><td>みどり之園</td><td class='room-col'>311</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/02/26 20:29:54</td></tr><tr><td>74</td><td>クレール相川</td><td class='room-col'>201</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/02/26 20:33:20</td></tr><tr class='has-issue'><td>75</td><td>ブルズアイ</td><td class='room-col'>606</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>クロス貼り替え後のリモコンケースやペーパーホルダーについて、ビスが十分に効いていない箇所や、ビスを打った際に部材が割れたままの部分が見受けられました。このような状態が残らないようご配慮いただけますと幸いです。</td><td>久保</td><td>2026/02/27 19:19:38</td></tr><tr><td>76</td><td>パル下新庄</td><td class='room-col'>106</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/03/02 06:31:24</td></tr><tr><td>77</td><td>フローラルハイツ服部</td><td class='room-col'>305</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/03/02 16:53:08</td></tr><tr><td>78</td><td>千里東壱番館</td><td class='room-col'>3B</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>山岸</td><td>2026/03/05 12:02:55</td></tr><tr><td>79</td><td>横山第１マンション</td><td class='room-col'>116</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>山本</td><td>2026/03/05 17:36:30</td></tr><tr><td>80</td><td>ソサエティ山手</td><td class='room-col'>308</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>久保</td><td>2026/03/06 16:28:09</td></tr><tr><td>81</td><td>Ｍ＆Ｍウメダイースト</td><td class='room-col'>505</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>山本</td><td>2026/03/07 10:37:56</td></tr><tr><td>82</td><td>コート関大前</td><td class='room-col'>A202</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>山岸</td><td>2026/03/08 16:39:47</td></tr><tr class='has-issue'><td>83</td><td>ドルチェアネックス</td><td class='room-col'>201</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>浴室鏡ウロコ取れていなかった。</td><td>山岸</td><td>2026/03/10 12:19:25</td></tr><tr><td>84</td><td>LANI　TOYONAKA</td><td class='room-col'>505</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/03/10 12:31:10</td></tr><tr><td>85</td><td>ル・ウエスト・チトセ</td><td class='room-col'>505</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>山岸</td><td>2026/03/10 16:08:47</td></tr><tr class='has-issue'><td>86</td><td>フロンツォーネ</td><td class='room-col'>405</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>シャワーホース水漏れ、その他清掃あり</td><td>阿部</td><td>2026/03/11 15:17:02</td></tr><tr><td>87</td><td>Ｃａｓａネッビア</td><td class='room-col'>104</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/03/12 17:14:04</td></tr><tr class='has-issue score-2'><td>88</td><td>メゾンラフィネ</td><td class='room-col'>101</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>キッチン周り油汚れ、リビング髪の毛付着</td><td>澤岡</td><td>2026/03/13 08:09:50</td></tr><tr><td>89</td><td>泉町ロイヤルハイツＣ棟</td><td class='room-col'>208</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>澤岡</td><td>2026/03/13 08:13:05</td></tr><tr><td>90</td><td>マンションてりは</td><td class='room-col'>405</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/03/13 12:22:07</td></tr><tr class='has-issue score-2'><td>91</td><td>ブルズアイ</td><td class='room-col'>503</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>居室の床がチリが多く、居室扉の丁番が大きい音が鳴っていた。見積に入っていてもいなくてもあのレベルの音は見逃さないでほしい。</td><td>久保</td><td>2026/03/13 16:41:16</td></tr><tr class='has-issue'><td>92</td><td>ブルズアイ</td><td class='room-col'>304</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>ワックスにチリと髪の毛が大量に絡まっていた</td><td>久保</td><td>2026/03/13 17:50:24</td></tr><tr class='has-issue'><td>93</td><td>ソサエティ山手</td><td class='room-col'>106</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>洗いがリフォームUP日に終わっていなかったので困った</td><td>久保</td><td>2026/03/13 18:28:34</td></tr><tr class='has-issue score-1'><td>94</td><td>ヒルバレー阪口</td><td class='room-col'>303</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>清掃の手直しにかかる時間、負担大</td><td>山本</td><td>2026/03/14 14:53:51</td></tr><tr class='has-issue score-2'><td>95</td><td>コート関大前</td><td class='room-col'>C112</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>網戸破れありました。</td><td>山岸</td><td>2026/03/14 16:26:05</td></tr><tr><td>96</td><td>コート関大前</td><td class='room-col'>D116</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>山岸</td><td>2026/03/14 16:26:37</td></tr><tr class='has-issue score-1'><td>97</td><td>ヒルバレー阪口</td><td class='room-col'>301</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>清掃の手直し箇所多数</td><td>山本</td><td>2026/03/14 16:32:24</td></tr><tr><td>98</td><td>エンリィ学生マンション</td><td class='room-col'>206</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/03/14 17:46:43</td></tr><tr><td>99</td><td>エンリィ学生マンション</td><td class='room-col'>102</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/03/14 17:47:53</td></tr><tr><td>100</td><td>コート関大前</td><td class='room-col'>A102</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>山岸</td><td>2026/03/14 18:00:00</td></tr><tr><td>101</td><td>サングレード千里</td><td class='room-col'>402</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/03/14 18:30:59</td></tr><tr><td>102</td><td>ハイツ丸栄</td><td class='room-col'>505</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/03/14 19:15:57</td></tr><tr class='has-issue score-2'><td>103</td><td>ブルズアイ</td><td class='room-col'>206</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>ウェットシートで床を拭いたら昨日洗いが終わったと思えないほど汚れた</td><td>久保</td><td>2026/03/14 19:52:44</td></tr><tr><td>104</td><td>ブルズアイ</td><td class='room-col'>105</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>久保</td><td>2026/03/14 19:53:25</td></tr><tr class='has-issue score-2'><td>105</td><td>天神橋ハイム</td><td class='room-col'>602</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>ペットの毛が室内中に残っている</td><td>山本</td><td>2026/03/16 10:35:27</td></tr><tr><td>106</td><td>ベア・ベリー</td><td class='room-col'>202</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>阿部</td><td>2026/03/16 12:35:27</td></tr><tr><td>107</td><td>ハイツ上ノ山</td><td class='room-col'>202</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>山岸</td><td>2026/03/16 16:10:38</td></tr><tr><td>108</td><td>ハイツイオン</td><td class='room-col'>B103</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>久保</td><td>2026/03/16 21:06:35</td></tr><tr><td>109</td><td>ディアス山手Ⅲ</td><td class='room-col'>407</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>久保</td><td>2026/03/16 21:07:39</td></tr><tr><td>110</td><td>ドルチェ山手壱番館</td><td class='room-col'>103</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/03/17 11:05:24</td></tr><tr><td>111</td><td>ディアス山手Ⅲ</td><td class='room-col'>505</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>久保</td><td>2026/03/17 15:27:16</td></tr><tr><td>112</td><td>ディアス山手Ⅲ</td><td class='room-col'>421</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>-</td><td>久保</td><td>2026/03/17 15:28:07</td></tr><tr><td>113</td><td>Ｃａｓａネッビア</td><td class='room-col'>204</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/03/17 15:53:00</td></tr><tr><td>114</td><td>グリーンコーポＹＡＹＯＩ</td><td class='room-col'>106</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>山本</td><td>2026/03/17 16:24:49</td></tr><tr><td>115</td><td>横山第１マンション</td><td class='room-col'>305</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>山本</td><td>2026/03/17 16:25:35</td></tr><tr class='has-issue score-1'><td>116</td><td>ヒルバレー阪口</td><td class='room-col'>103</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>清掃の手直し多数</td><td>山本</td><td>2026/03/17 17:37:52</td></tr><tr><td>117</td><td>ダイキハイム</td><td class='room-col'>201</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>-</td><td>平井</td><td>2026/03/17 18:41:39</td></tr></tbody></table></div></div><div class="collapse-actions"><button type="button" class="collapse-btn show-all-btn">全件を見る</button><button type="button" class="collapse-btn close-all-btn is-hidden">閉じる</button></div></div>
+
+    <h2>6. 指摘事項一覧</h2>
+    <div class='table-wrap'><table><thead><tr><th>No</th><th>物件名</th><th>号室</th><th>評価</th><th>問題点</th><th>担当者</th><th>タイムスタンプ</th></tr></thead><tbody><tr class='has-issue score-1'><td>1</td><td>天神橋ハイム</td><td class='room-col'>301</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>手直し依頼</td><td>山本</td><td>2026/01/26 12:34:49</td></tr><tr class='has-issue score-1'><td>2</td><td>ソサエティ山手</td><td class='room-col'>401</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>浴室とキッチンの水栓で水漏れが見られた箇所がありました。また、カーテンレールのランナーに不良が複数あり、房掛けも割れた状態になっていました。念のためお伝えいたします。</td><td>久保</td><td>2026/02/04 16:10:58</td></tr><tr class='has-issue score-1'><td>3</td><td>カームヒルズⅡ</td><td class='room-col'>207</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>期間が開いていたからか、虫の死骸や蜘蛛の巣が多数あった。浴槽は白泡現象がひどく、隅が減り込む形で穴になっていた。</td><td>平井</td><td>2026/02/06 16:43:34</td></tr><tr class='has-issue score-1'><td>4</td><td>グランデアステール芦屋</td><td class='room-col'>614</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>リフォーム内容とかどうでも良くなるぐらい汚かったです。ワックス扉にかかって放置で完了？その他拭き漏れ多数あり。
+金取るレベルじゃ無いこのクオリティを兵庫エリアでやられるの相当しんどいです</td><td>阿部</td><td>2026/02/20 16:00:22</td></tr><tr class='has-issue score-1'><td>5</td><td>ヒルバレー阪口</td><td class='room-col'>303</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>清掃の手直しにかかる時間、負担大</td><td>山本</td><td>2026/03/14 14:53:51</td></tr><tr class='has-issue score-1'><td>6</td><td>ヒルバレー阪口</td><td class='room-col'>301</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>清掃の手直し箇所多数</td><td>山本</td><td>2026/03/14 16:32:24</td></tr><tr class='has-issue score-1'><td>7</td><td>ヒルバレー阪口</td><td class='room-col'>103</td><td><span class='rating-badge badge-1'>1</span></td><td class='issue-col'>清掃の手直し多数</td><td>山本</td><td>2026/03/17 17:37:52</td></tr><tr class='has-issue score-2'><td>8</td><td>みどり之園</td><td class='room-col'>102</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>ヤニ取れていない</td><td>澤岡</td><td>2026/01/20 07:35:18</td></tr><tr class='has-issue score-2'><td>9</td><td>ソサエティ山手</td><td class='room-col'>103</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>キッチンおよび浴室の水栓からわずかに水漏れが見られます。また、キッチン下の化粧板について、固定用のビスが不足しているようでした。さらに、カーテンの房掛けは両面テープが一部剥がれかけており、固定が弱くなっている印象を受けました。</td><td>久保</td><td>2026/01/21 14:35:32</td></tr><tr class='has-issue score-2'><td>10</td><td>ブルズアイ</td><td class='room-col'>602</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>洗面化粧台の交換後のクロスと床の補修まで仕上げてほしかった。洗いが入っていなかったので明日の入居に間に合わない可能性もあったので気をつけていただきたいです。</td><td>久保</td><td>2026/02/13 21:15:38</td></tr><tr class='has-issue score-2'><td>11</td><td>ブルズアイ</td><td class='room-col'>404</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>クロス張替え後にエアコンリモコンケースを付けずに外したままでした。</td><td>久保</td><td>2026/02/20 18:46:52</td></tr><tr class='has-issue score-2'><td>12</td><td>ヒルサイドハウス源</td><td class='room-col'>301</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>張り替えた洗面所床CFに糊のような汚れあり。窓枠小傷未修繕。</td><td>久保</td><td>2026/02/22 15:58:14</td></tr><tr class='has-issue score-2'><td>13</td><td>メゾンラフィネ</td><td class='room-col'>101</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>キッチン周り油汚れ、リビング髪の毛付着</td><td>澤岡</td><td>2026/03/13 08:09:50</td></tr><tr class='has-issue score-2'><td>14</td><td>ブルズアイ</td><td class='room-col'>503</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>居室の床がチリが多く、居室扉の丁番が大きい音が鳴っていた。見積に入っていてもいなくてもあのレベルの音は見逃さないでほしい。</td><td>久保</td><td>2026/03/13 16:41:16</td></tr><tr class='has-issue score-2'><td>15</td><td>コート関大前</td><td class='room-col'>C112</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>網戸破れありました。</td><td>山岸</td><td>2026/03/14 16:26:05</td></tr><tr class='has-issue score-2'><td>16</td><td>ブルズアイ</td><td class='room-col'>206</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>ウェットシートで床を拭いたら昨日洗いが終わったと思えないほど汚れた</td><td>久保</td><td>2026/03/14 19:52:44</td></tr><tr class='has-issue score-2'><td>17</td><td>天神橋ハイム</td><td class='room-col'>602</td><td><span class='rating-badge badge-2'>2</span></td><td class='issue-col'>ペットの毛が室内中に残っている</td><td>山本</td><td>2026/03/16 10:35:27</td></tr><tr class='has-issue'><td>18</td><td>平和ビル</td><td class='room-col'>303</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>クローゼット内未清掃でした。
+ある程度のクオリティ確保お願い致します。</td><td>阿部</td><td>2026/01/07 13:48:33</td></tr><tr class='has-issue'><td>19</td><td>コンセール裕恵</td><td class='room-col'>505</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>排水カゴ無し。ハウスクリーニング悪し</td><td>阿部</td><td>2026/01/09 12:21:49</td></tr><tr class='has-issue'><td>20</td><td>ソサエティ山手</td><td class='room-col'>105</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>風呂場の水栓の切替弁の不良でシャワーと蛇口から同時に水が出ていた。</td><td>久保</td><td>2026/01/21 16:47:29</td></tr><tr class='has-issue'><td>21</td><td>千里東壱番館</td><td class='room-col'>1A</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>キッチンのコーキング変色が酷かったです。</td><td>山岸</td><td>2026/01/23 17:45:56</td></tr><tr class='has-issue'><td>22</td><td>ベルエアー</td><td class='room-col'>1011</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>清掃の手直しが多い。</td><td>山本</td><td>2026/02/02 13:10:11</td></tr><tr class='has-issue'><td>23</td><td>フロンツォーネ</td><td class='room-col'>402</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>CFの施工が荒い
+クローゼット敷居部分清掃されていません。
+キッチンコーキングカビがひどい</td><td>阿部</td><td>2026/02/03 16:46:33</td></tr><tr class='has-issue'><td>24</td><td>横山第１マンション</td><td class='room-col'>202</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>各所に毛髪類</td><td>山本</td><td>2026/02/10 11:59:27</td></tr><tr class='has-issue'><td>25</td><td>ディアス山手Ⅲ</td><td class='room-col'>501</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>浴室の排水口の詰まりが原因で水を排水した際に溢れる状況を確認いたしました。清掃時にお気づきいただけた可能性もあるかと思いますので、今後のご参考までに共有いたします。現在は通貫作業により排水は正常に戻っております。引き続きよろしくお願いいたします。</td><td>久保</td><td>2026/02/22 16:11:43</td></tr><tr class='has-issue'><td>26</td><td>コンセール愛宕山</td><td class='room-col'>208</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>間仕切りの扉建て付け不良でした。コンセール愛宕山で何軒かこの不具合あります。今回は蝶番起こしで直りましたが、直らない時も多いイメージですので退去時この辺りの確認もお願い致します。</td><td>阿部</td><td>2026/02/26 13:52:56</td></tr><tr class='has-issue'><td>27</td><td>ブルズアイ</td><td class='room-col'>606</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>クロス貼り替え後のリモコンケースやペーパーホルダーについて、ビスが十分に効いていない箇所や、ビスを打った際に部材が割れたままの部分が見受けられました。このような状態が残らないようご配慮いただけますと幸いです。</td><td>久保</td><td>2026/02/27 19:19:38</td></tr><tr class='has-issue'><td>28</td><td>ドルチェアネックス</td><td class='room-col'>201</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>浴室鏡ウロコ取れていなかった。</td><td>山岸</td><td>2026/03/10 12:19:25</td></tr><tr class='has-issue'><td>29</td><td>フロンツォーネ</td><td class='room-col'>405</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>シャワーホース水漏れ、その他清掃あり</td><td>阿部</td><td>2026/03/11 15:17:02</td></tr><tr class='has-issue'><td>30</td><td>ブルズアイ</td><td class='room-col'>304</td><td><span class='rating-badge badge-3'>3</span></td><td class='issue-col'>ワックスにチリと髪の毛が大量に絡まっていた</td><td>久保</td><td>2026/03/13 17:50:24</td></tr><tr class='has-issue'><td>31</td><td>コート関大前</td><td class='room-col'>C115</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>洗いの業者が忘れていた為、完工日よりも遅れてしまっていました。</td><td>山岸</td><td>2026/01/19 18:09:02</td></tr><tr class='has-issue'><td>32</td><td>コンセール愛宕山</td><td class='room-col'>207</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>クローゼット内　拭き残しあり</td><td>阿部</td><td>2026/02/10 10:46:39</td></tr><tr class='has-issue'><td>33</td><td>ヒルサイドハウス源</td><td class='room-col'>103</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>浴室の鏡前の棚について、清掃がされていない箇所がありました。また、目地にカビが残っている部分が見受けられましたので、念のためお伝えいたします。</td><td>久保</td><td>2026/02/18 18:54:26</td></tr><tr class='has-issue'><td>34</td><td>ヒルサイドハウス源</td><td class='room-col'>303</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>ワックスを施した床に、髪の毛が多く残っている箇所がありましたので、念のためお伝えいたします。</td><td>久保</td><td>2026/02/18 18:56:58</td></tr><tr class='has-issue'><td>35</td><td>ブルズアイ</td><td class='room-col'>504</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>全体的に清掃不良。浴室カビと張り替えた洗面CFに汚れあり。</td><td>久保</td><td>2026/02/20 18:42:54</td></tr><tr class='has-issue'><td>36</td><td>ソサエティ山手</td><td class='room-col'>106</td><td><span class='rating-badge badge-4'>4</span></td><td class='issue-col'>洗いがリフォームUP日に終わっていなかったので困った</td><td>久保</td><td>2026/03/13 18:28:34</td></tr></tbody></table></div>
+
+    <h2>7. 物件別分析</h2>
+    <div class='table-wrap'><table><thead><tr><th>物件名</th><th>件数</th><th>低評価件数</th></tr></thead><tbody><tr><td>ブルズアイ</td><td>8</td><td>4</td></tr><tr><td>ヒルバレー阪口</td><td>5</td><td>3</td></tr><tr><td>ソサエティ山手</td><td>5</td><td>2</td></tr><tr><td>天神橋ハイム</td><td>2</td><td>2</td></tr><tr><td>みどり之園</td><td>7</td><td>1</td></tr><tr><td>コート関大前</td><td>5</td><td>1</td></tr><tr><td>グランデアステール芦屋</td><td>4</td><td>1</td></tr><tr><td>ヒルサイドハウス源</td><td>3</td><td>1</td></tr><tr><td>カームヒルズⅡ</td><td>2</td><td>1</td></tr><tr><td>メゾンラフィネ</td><td>2</td><td>1</td></tr><tr><td>ディアス山手Ⅲ</td><td>5</td><td>0</td></tr><tr><td>Ｃａｓａネッビア</td><td>5</td><td>0</td></tr><tr><td>エンリィ学生マンション</td><td>3</td><td>0</td></tr><tr><td>コンセール愛宕山</td><td>3</td><td>0</td></tr><tr><td>コンセール裕恵</td><td>3</td><td>0</td></tr><tr><td>ドルチェアネックス</td><td>3</td><td>0</td></tr><tr><td>横山第１マンション</td><td>3</td><td>0</td></tr><tr><td>LANI　TOYONAKA</td><td>2</td><td>0</td></tr><tr><td>カサ・デ・グラナダ</td><td>2</td><td>0</td></tr><tr><td>カーサスペリオーレⅡ</td><td>2</td><td>0</td></tr><tr><td>グリーンコーポＹＡＹＯＩ</td><td>2</td><td>0</td></tr><tr><td>ダイキハイム</td><td>2</td><td>0</td></tr><tr><td>ドルチェ山手壱番館</td><td>2</td><td>0</td></tr><tr><td>ハイツ上ノ山</td><td>2</td><td>0</td></tr><tr><td>フェアリーフラッツ</td><td>2</td><td>0</td></tr><tr><td>フロンツォーネ</td><td>2</td><td>0</td></tr><tr><td>ベルエアー</td><td>2</td><td>0</td></tr><tr><td>メゾンセルクル</td><td>2</td><td>0</td></tr><tr><td>千里東壱番館</td><td>2</td><td>0</td></tr><tr><td>大阪謄写館ビル</td><td>2</td><td>0</td></tr><tr><td>Ｍ＆Ｍウメダイースト</td><td>2</td><td>0</td></tr><tr><td>アレルヤ</td><td>1</td><td>0</td></tr><tr><td>カーサスペリオーレⅠ</td><td>1</td><td>0</td></tr><tr><td>カームヒルズⅠ</td><td>1</td><td>0</td></tr><tr><td>クレール相川</td><td>1</td><td>0</td></tr><tr><td>グラン藤</td><td>1</td><td>0</td></tr><tr><td>コンセルト片山</td><td>1</td><td>0</td></tr><tr><td>サニーハイツⅠ</td><td>1</td><td>0</td></tr><tr><td>サングレード千里</td><td>1</td><td>0</td></tr><tr><td>ハイツイオン</td><td>1</td><td>0</td></tr><tr><td>ハイツ丸栄</td><td>1</td><td>0</td></tr><tr><td>パル下新庄</td><td>1</td><td>0</td></tr><tr><td>フェリス千里山</td><td>1</td><td>0</td></tr><tr><td>フローラルハイツ服部</td><td>1</td><td>0</td></tr><tr><td>ベア・ベリー</td><td>1</td><td>0</td></tr><tr><td>マンションてりは</td><td>1</td><td>0</td></tr><tr><td>ル・ウエスト・チトセ</td><td>1</td><td>0</td></tr><tr><td>平和ビル</td><td>1</td><td>0</td></tr><tr><td>泉町ロイヤルハイツＣ棟</td><td>1</td><td>0</td></tr><tr><td>ＣＲＵＭ－１</td><td>1</td><td>0</td></tr><tr><td>ＤＯ・Ｚ</td><td>1</td><td>0</td></tr><tr><td>ＬＡＰＵＴＡ２１</td><td>1</td><td>0</td></tr></tbody></table></div>
+
+    <h2>8. 主な指摘内容</h2>
+    <div class='table-wrap'><table><thead><tr><th>不具合内容</th><th>件数</th></tr></thead><tbody><tr><td>清掃不十分・汚れ残り</td><td>8</td></tr><tr><td>建付け不良・作動不良</td><td>4</td></tr><tr><td>汚れ・美観不良</td><td>4</td></tr><tr><td>水漏れ・漏水</td><td>4</td></tr><tr><td>破損・割れ・欠け</td><td>2</td></tr><tr><td>完工遅れ・対応遅延</td><td>2</td></tr><tr><td>部材不足・取付不足</td><td>1</td></tr><tr><td>傷・擦れ</td><td>1</td></tr><tr><td>剥がれ・めくれ</td><td>1</td></tr><tr><td>施工不良・仕上がり不十分</td><td>1</td></tr><tr><td>排水詰まり・流れ不良</td><td>1</td></tr></tbody></table></div>
+
+    <h2>9. 主な指摘部位</h2>
+    <div class='table-wrap'><table><thead><tr><th>対象部位</th><th>件数</th></tr></thead><tbody><tr><td>建具・扉まわり</td><td>9</td></tr><tr><td>床・CF・フローリング</td><td>7</td></tr><tr><td>浴室・風呂まわり</td><td>7</td></tr><tr><td>キッチンまわり</td><td>5</td></tr><tr><td>クロス・壁紙</td><td>3</td></tr><tr><td>水栓・蛇口</td><td>3</td></tr><tr><td>洗面まわり</td><td>3</td></tr><tr><td>排水まわり</td><td>2</td></tr><tr><td>エアコン</td><td>1</td></tr><tr><td>網戸</td><td>1</td></tr></tbody></table></div>
+
+    <h2>10. 主な指摘傾向</h2>
+    <div class="subnote">自由記述コメントをもとに整理した参考集計です。</div>
+    <div class='table-wrap'><table><thead><tr><th>対象部位</th><th>不具合内容</th><th>件数</th></tr></thead><tbody><tr><td>床</td><td>清掃不足</td><td>2</td></tr><tr><td>建具</td><td>不良</td><td>2</td></tr><tr><td>建具</td><td>破損</td><td>2</td></tr><tr><td>水栓</td><td>漏水</td><td>2</td></tr><tr><td>洗面</td><td>汚れ</td><td>2</td></tr><tr><td>キッチン</td><td>汚れ</td><td>1</td></tr><tr><td>床</td><td>施工不良</td><td>1</td></tr><tr><td>建具</td><td>不足</td><td>1</td></tr><tr><td>建具</td><td>剥がれ</td><td>1</td></tr><tr><td>建具</td><td>清掃不足</td><td>1</td></tr><tr><td>排水</td><td>詰まり</td><td>1</td></tr><tr><td>水栓</td><td>不良</td><td>1</td></tr></tbody></table></div>
+
+    <h2>11. 低評価案件の主な指摘内容</h2>
+    <div class='table-wrap'><table><thead><tr><th>不具合内容</th><th>件数</th></tr></thead><tbody><tr><td>汚れ・美観不良</td><td>3</td></tr><tr><td>清掃不十分・汚れ残り</td><td>3</td></tr><tr><td>水漏れ・漏水</td><td>3</td></tr><tr><td>建付け不良・作動不良</td><td>1</td></tr><tr><td>部材不足・取付不足</td><td>1</td></tr><tr><td>傷・擦れ</td><td>1</td></tr><tr><td>剥がれ・めくれ</td><td>1</td></tr><tr><td>破損・割れ・欠け</td><td>1</td></tr><tr><td>完工遅れ・対応遅延</td><td>1</td></tr></tbody></table></div>
+
+    <h2>12. 低評価案件の主な指摘部位</h2>
+    <div class='table-wrap'><table><thead><tr><th>対象部位</th><th>件数</th></tr></thead><tbody><tr><td>床・CF・フローリング</td><td>4</td></tr><tr><td>建具・扉まわり</td><td>4</td></tr><tr><td>キッチンまわり</td><td>3</td></tr><tr><td>クロス・壁紙</td><td>2</td></tr><tr><td>水栓・蛇口</td><td>2</td></tr><tr><td>洗面まわり</td><td>2</td></tr><tr><td>浴室・風呂まわり</td><td>2</td></tr><tr><td>エアコン</td><td>1</td></tr><tr><td>網戸</td><td>1</td></tr></tbody></table></div>
+
+    <h2>傾向整理</h2><div class="ai-box"><ul><li>不具合内容では汚れ8件、漏水5件、清掃不足4件が中心となっており、仕上がり確認や清掃品質、防水・設備まわりの最終点検に課題が集中しています。</li><li>対象部位では建具9件、床8件、キッチン7件が多く、低評価案件でも床4件、建具4件、キッチン3件と重なっているため、これらの部位に対する施工後チェックの精度向上が重要です。</li></ul></div>
+
+    <h2>改善提案</h2><div class="ai-box"><ul><li>引渡し前の清掃・美観確認を強化し、汚れや清掃不足の見落としを防ぐためのチェックリスト運用を徹底する。</li><li>漏水対策として、キッチンを含む水まわり設備の通水確認や接続部確認を標準化し、施工完了後の点検工程を明確にする。</li><li>建具・床・キッチンについては重点管理部位として再設定し、施工担当者と検査担当者のダブルチェック体制を導入する。</li></ul></div>
+
+    <h2>総括コメント</h2><div class="ai-box ai-message-box">いつもご対応ありがとうございます。今回の集計では、汚れ・漏水・清掃不足を中心とした指摘が見られ、特に建具・床・キッチンで評価低下につながる傾向が確認されました。今後は清掃品質の徹底、水まわりの最終確認、重点部位の検査強化を進めていただくことで、全体評価の安定化と是正件数の削減が期待されます。引き続き品質向上に向けたご協力をお願いいたします。</div>
+
+    <h2>13. 備考</h2>
+    <div class="final">本レポートは集計結果をもとに作成しています。</div>
+
+    <h2>評価基準</h2>
+    <div class="criteria-card">
+      <div class="criteria-grid">
+        <div class="criteria-item"><strong>★5</strong>非常に良好（仕上がり・対応とも高水準）</div>
+        <div class="criteria-item"><strong>★4</strong>概ね良好（軽微な改善余地あり）</div>
+        <div class="criteria-item"><strong>★3</strong>標準（一定の改善検討が必要）</div>
+        <div class="criteria-item"><strong>★2</strong>要改善（是正対応を優先）</div>
+        <div class="criteria-item"><strong>★1</strong>重大な改善要（早急な是正が必要）</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var root = document.querySelector('[data-collapse="all-records"]');
+      if (!root) return;
+      var preview = root.querySelector('.collapse-preview');
+      var full = root.querySelector('.collapse-full');
+      var showBtn = root.querySelector('.show-all-btn');
+      var closeBtn = root.querySelector('.close-all-btn');
+      if (!preview || !full || !showBtn || !closeBtn) return;
+
+      showBtn.addEventListener('click', function () {
+        preview.classList.add('is-hidden');
+        full.classList.remove('is-hidden');
+        showBtn.classList.add('is-hidden');
+        closeBtn.classList.remove('is-hidden');
+      });
+
+      closeBtn.addEventListener('click', function () {
+        full.classList.add('is-hidden');
+        preview.classList.remove('is-hidden');
+        closeBtn.classList.add('is-hidden');
+        showBtn.classList.remove('is-hidden');
+      });
+    })();
+  </script>
+</body>
+</html>
