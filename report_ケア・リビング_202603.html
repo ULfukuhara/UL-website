@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>株式会社ケア・リビング_施工品質評価レポート</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: "Noto Sans JP", sans-serif; }
+    .glass { backdrop-filter: blur(8px); background: rgba(255,255,255,.82); }
+    .section-title::before {
+      content:"";
+      display:inline-block;
+      width:10px;
+      height:28px;
+      border-radius:999px;
+      margin-right:.7rem;
+      vertical-align:-5px;
+      background: linear-gradient(180deg,#2563eb,#60a5fa);
+    }
+    .chart-wrap {
+      position: relative;
+      height: 140px;
+    }
+    .chart-outer {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .comment-details { margin-top: 10px; }
+    .comment-details summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 700;
+      color: #1e3a8a;
+      background: #eff6ff;
+      border: 1px solid #dbeafe;
+      border-radius: 10px;
+      padding: 10px 14px;
+    }
+    .comment-details summary::-webkit-details-marker { display: none; }
+    .comment-details[open] summary { margin-bottom: 12px; }
+    @media print {
+      .no-print { display:none !important; }
+      body { background:#fff !important; }
+      .print-break { page-break-before: always; }
+      .shadow-lg,.shadow-sm { box-shadow:none !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <div class="bg-gradient-to-br from-blue-900 via-blue-700 to-sky-500 text-white">
+    <div class="max-w-7xl mx-auto px-6 py-10">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div>
+          <p class="text-blue-100 tracking-widest text-sm mb-2">UNIV LIFE QUALITY REPORT</p>
+          <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">原状回復工事 施工品質評価レポート</h1>
+          <p class="mt-3 text-blue-50 text-base">業者へのフィードバックと品質向上のためのレポート</p>
+        </div>
+        <div class="glass rounded-2xl px-5 py-4 text-slate-800 min-w-[280px]">
+          <div class="text-sm text-slate-500">対象業者</div>
+          <div class="text-2xl font-bold text-blue-900">株式会社ケア・リビング</div>
+          <div class="mt-3 text-sm text-slate-500">対象期間</div>
+          <div class="font-semibold">2026年1月〜2026年3月</div>
+          <div class="mt-3 text-sm text-slate-500">作成日</div>
+          <div class="font-semibold">2026年03月18日</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-6">
+    <div class="no-print flex flex-wrap gap-3 mb-6">
+      <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-semibold shadow-sm">印刷 / PDF保存</button>
+    </div>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
+      <div class="bg-white rounded-2xl p-5 shadow-sm border">
+        <div class="text-sm text-slate-500">平均評価</div>
+        <div class="text-3xl font-extrabold text-blue-700 mt-2">3.1</div>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border">
+        <div class="text-sm text-slate-500">総件数</div>
+        <div class="text-3xl font-extrabold mt-2">120</div>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border">
+        <div class="text-sm text-slate-500">★4以上比率</div>
+        <div class="text-3xl font-extrabold mt-2 text-emerald-600">33.3%</div>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border">
+        <div class="text-sm text-slate-500">★2以下件数</div>
+        <div class="text-3xl font-extrabold mt-2 text-rose-600">17</div>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 xl:grid-cols-12 gap-6 mb-8">
+      <div class="bg-white rounded-3xl p-6 shadow-lg border xl:col-span-5">
+        <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">総評</h2>
+        <div class="leading-8 text-[15px] text-slate-700 whitespace-pre-wrap">平均評価は3.1点（全120件）で、全体として一定の品質水準で施工いただいています。
+主な確認事項は清掃不足（10件）・補修不足（6件）で、部位では浴室（8件）・床（7件）に関する指摘が中心でした。
+★2以下の案件は17件あり、重点確認項目を共有しながら最終確認を進めることで、品質の安定化につながると考えます。</div>
+        <div class="mt-4 inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-800 font-semibold border border-blue-100">
+          品質水準：一部確認事項あり
+        </div>
+      </div>
+      <div class="bg-white rounded-3xl p-5 shadow-lg border xl:col-span-7">
+        <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-3">評価分布</h2>
+        <div class="chart-outer">
+          <div class="chart-wrap">
+            <canvas id="ratingChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="bg-slate-50 rounded-3xl p-6 shadow-sm border border-slate-200 mb-8">
+      <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">評価基準</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-2">
+        
+        <div class="rounded-xl border border-slate-200 bg-white px-3 py-3">
+          <div class="font-bold text-slate-800">★5 非常に良好</div>
+          <div class="text-xs text-slate-600 mt-1">仕上がり・対応とも高水準</div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white px-3 py-3">
+          <div class="font-bold text-slate-800">★4 概ね良好</div>
+          <div class="text-xs text-slate-600 mt-1">軽微な改善余地あり</div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white px-3 py-3">
+          <div class="font-bold text-slate-800">★3 標準</div>
+          <div class="text-xs text-slate-600 mt-1">一定の改善検討が必要</div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white px-3 py-3">
+          <div class="font-bold text-slate-800">★2 要改善</div>
+          <div class="text-xs text-slate-600 mt-1">是正対応を優先</div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white px-3 py-3">
+          <div class="font-bold text-slate-800">★1 重大な改善要</div>
+          <div class="text-xs text-slate-600 mt-1">早急な是正が必要</div>
+        </div>
+        
+      </div>
+    </section>
+    
+
+    
+    <section class="mb-8">
+      <div class="bg-white rounded-3xl p-6 shadow-lg border w-full md:w-1/2">
+        <div class="flex items-center justify-between gap-4 mb-4">
+          <h2 class="section-title text-2xl font-extrabold text-slate-900">コメント件数の多い物件</h2>
+          <span class="text-sm text-slate-500">上位5件</span>
+        </div>
+        <ul class="space-y-0">
+          <li class="flex items-center justify-between gap-4 border-b last:border-b-0 py-2"><span class="text-slate-700">ブルズアイ</span><span class="text-slate-900 font-semibold">7件</span></li>
+<li class="flex items-center justify-between gap-4 border-b last:border-b-0 py-2"><span class="text-slate-700">ソサエティ山手</span><span class="text-slate-900 font-semibold">4件</span></li>
+<li class="flex items-center justify-between gap-4 border-b last:border-b-0 py-2"><span class="text-slate-700">ヒルバレー阪口</span><span class="text-slate-900 font-semibold">3件</span></li>
+<li class="flex items-center justify-between gap-4 border-b last:border-b-0 py-2"><span class="text-slate-700">ヒルサイドハウス源</span><span class="text-slate-900 font-semibold">3件</span></li>
+<li class="flex items-center justify-between gap-4 border-b last:border-b-0 py-2"><span class="text-slate-700">天神橋ハイム</span><span class="text-slate-900 font-semibold">2件</span></li>
+        </ul>
+      </div>
+    </section>
+    
+    <section class="bg-white rounded-3xl p-6 shadow-lg border mb-8">
+      <div class="flex items-center justify-between gap-4 mb-4">
+        <h2 class="section-title text-2xl font-extrabold text-slate-900">コメント一覧（全件）</h2>
+        <span class="text-sm text-slate-500">36件</span>
+      </div>
+      
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700">
+              <th class="px-4 py-3 text-left">物件名</th>
+              <th class="px-4 py-3 text-left">号室</th>
+              <th class="px-4 py-3 text-left">評価</th>
+              <th class="px-4 py-3 text-left">コメント</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">カームヒルズⅡ</td>
+          <td class="px-4 py-3">207</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-rose-100 text-rose-700">★1</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">期間が開いていたからか、虫の死骸や蜘蛛の巣が多数あった。浴槽は白泡現象がひどく、隅が減り込む形で穴になっていた。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">グランデアステール芦屋</td>
+          <td class="px-4 py-3">614</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-rose-100 text-rose-700">★1</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">リフォーム内容とかどうでも良くなるぐらい汚かったです。ワックス扉にかかって放置で完了？その他拭き漏れ多数あり。
+金取るレベルじゃ無いこのクオリティを兵庫エリアでやられるの相当しんどいです</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ソサエティ山手</td>
+          <td class="px-4 py-3">401</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-rose-100 text-rose-700">★1</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">浴室とキッチンの水栓で水漏れが見られた箇所がありました。また、カーテンレールのランナーに不良が複数あり、房掛けも割れた状態になっていました。念のためお伝えいたします。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ヒルバレー阪口</td>
+          <td class="px-4 py-3">103</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-rose-100 text-rose-700">★1</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">清掃の手直し多数</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ヒルバレー阪口</td>
+          <td class="px-4 py-3">301</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-rose-100 text-rose-700">★1</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">清掃の手直し箇所多数</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ヒルバレー阪口</td>
+          <td class="px-4 py-3">303</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-rose-100 text-rose-700">★1</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">清掃の手直しにかかる時間、負担大</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">天神橋ハイム</td>
+          <td class="px-4 py-3">301</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-rose-100 text-rose-700">★1</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">手直し依頼</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">みどり之園</td>
+          <td class="px-4 py-3">102</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">ヤニ取れていない</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コート関大前</td>
+          <td class="px-4 py-3">C112</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">網戸破れありました。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ソサエティ山手</td>
+          <td class="px-4 py-3">103</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">キッチンおよび浴室の水栓からわずかに水漏れが見られます。また、キッチン下の化粧板について、固定用のビスが不足しているようでした。さらに、カーテンの房掛けは両面テープが一部剥がれかけており、固定が弱くなっている印象を受けました。</td>
+        </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      
+      <details class="comment-details mt-4">
+        <summary>残り26件を表示</summary>
+        <div class="overflow-x-auto mt-3">
+          <table class="min-w-full text-sm">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700">
+                <th class="px-4 py-3 text-left">物件名</th>
+                <th class="px-4 py-3 text-left">号室</th>
+                <th class="px-4 py-3 text-left">評価</th>
+                <th class="px-4 py-3 text-left">コメント</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ヒルサイドハウス源</td>
+          <td class="px-4 py-3">301</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">張り替えた洗面所床CFに糊のような汚れあり。窓枠小傷未修繕。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ブルズアイ</td>
+          <td class="px-4 py-3">206</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">ウェットシートで床を拭いたら昨日洗いが終わったと思えないほど汚れた</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ブルズアイ</td>
+          <td class="px-4 py-3">404</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">クロス張替え後にエアコンリモコンケースを付けずに外したままでした。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ブルズアイ</td>
+          <td class="px-4 py-3">503</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">居室の床がチリが多く、居室扉の丁番が大きい音が鳴っていた。見積に入っていてもいなくてもあのレベルの音は見逃さないでほしい。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ブルズアイ</td>
+          <td class="px-4 py-3">602</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">洗面化粧台の交換後のクロスと床の補修まで仕上げてほしかった。洗いが入っていなかったので明日の入居に間に合わない可能性もあったので気をつけていただきたいです。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">メゾンラフィネ</td>
+          <td class="px-4 py-3">101</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">キッチン周り油汚れ、リビング髪の毛付着</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">天神橋ハイム</td>
+          <td class="px-4 py-3">602</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">ペットの毛が室内中に残っている</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コンセール愛宕山</td>
+          <td class="px-4 py-3">208</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">間仕切りの扉建て付け不良でした。コンセール愛宕山で何軒かこの不具合あります。今回は蝶番起こしで直りましたが、直らない時も多いイメージですので退去時この辺りの確認もお願い致します。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コンセール裕恵</td>
+          <td class="px-4 py-3">505</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">排水カゴ無し。ハウスクリーニング悪し</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ソサエティ山手</td>
+          <td class="px-4 py-3">105</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">風呂場の水栓の切替弁の不良でシャワーと蛇口から同時に水が出ていた。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ディアス山手Ⅲ</td>
+          <td class="px-4 py-3">501</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">浴室の排水口の詰まりが原因で水を排水した際に溢れる状況を確認いたしました。清掃時にお気づきいただけた可能性もあるかと思いますので、今後のご参考までに共有いたします。現在は通貫作業により排水は正常に戻っております。引き続きよろしくお願いいたします。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ドルチェアネックス</td>
+          <td class="px-4 py-3">201</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">浴室鏡ウロコ取れていなかった。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">フロンツォーネ</td>
+          <td class="px-4 py-3">402</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">CFの施工が荒い
+クローゼット敷居部分清掃されていません。
+キッチンコーキングカビがひどい</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">フロンツォーネ</td>
+          <td class="px-4 py-3">405</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">シャワーホース水漏れ、その他清掃あり</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ブルズアイ</td>
+          <td class="px-4 py-3">304</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">ワックスにチリと髪の毛が大量に絡まっていた</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ブルズアイ</td>
+          <td class="px-4 py-3">606</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">クロス貼り替え後のリモコンケースやペーパーホルダーについて、ビスが十分に効いていない箇所や、ビスを打った際に部材が割れたままの部分が見受けられました。このような状態が残らないようご配慮いただけますと幸いです。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ベルエアー</td>
+          <td class="px-4 py-3">1011</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">清掃の手直しが多い。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">千里東壱番館</td>
+          <td class="px-4 py-3">1A</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">キッチンのコーキング変色が酷かったです。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">平和ビル</td>
+          <td class="px-4 py-3">303</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">クローゼット内未清掃でした。
+ある程度のクオリティ確保お願い致します。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">横山第１マンション</td>
+          <td class="px-4 py-3">202</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">各所に毛髪類</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コンセール愛宕山</td>
+          <td class="px-4 py-3">207</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">クローゼット内　拭き残しあり</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コート関大前</td>
+          <td class="px-4 py-3">C115</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">洗いの業者が忘れていた為、完工日よりも遅れてしまっていました。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ソサエティ山手</td>
+          <td class="px-4 py-3">106</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">洗いがリフォームUP日に終わっていなかったので困った</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ヒルサイドハウス源</td>
+          <td class="px-4 py-3">103</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">浴室の鏡前の棚について、清掃がされていない箇所がありました。また、目地にカビが残っている部分が見受けられましたので、念のためお伝えいたします。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ヒルサイドハウス源</td>
+          <td class="px-4 py-3">303</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">ワックスを施した床に、髪の毛が多く残っている箇所がありましたので、念のためお伝えいたします。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ブルズアイ</td>
+          <td class="px-4 py-3">504</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">全体的に清掃不良。浴室カビと張り替えた洗面CFに汚れあり。</td>
+        </tr>
+            
+            </tbody>
+          </table>
+        </div>
+      </details>
+            
+        
+    </section>
+    
+    <section class="bg-white rounded-3xl p-6 shadow-lg border mb-8 print-break">
+      <h2 class="section-title text-2xl font-extrabold text-slate-900">一覧（全件）</h2>
+      
+      <details class="comment-details">
+        <summary>全120件を表示（コメントあり36件）</summary>
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700">
+                <th class="px-4 py-3 text-left">物件名</th>
+                <th class="px-4 py-3 text-left">号室</th>
+                <th class="px-4 py-3 text-left">評価</th>
+                <th class="px-4 py-3 text-left">コメント</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">Ｃａｓａネッビア</td>
+          <td class="px-4 py-3">104</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">Ｃａｓａネッビア</td>
+          <td class="px-4 py-3">105</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">Ｃａｓａネッビア</td>
+          <td class="px-4 py-3">107</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">Ｃａｓａネッビア</td>
+          <td class="px-4 py-3">204</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">Ｃａｓａネッビア</td>
+          <td class="px-4 py-3">411</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ＣＲＵＭ－１</td>
+          <td class="px-4 py-3">402</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ＤＯ・Ｚ</td>
+          <td class="px-4 py-3">503</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">LANI　TOYONAKA</td>
+          <td class="px-4 py-3">309</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">LANI　TOYONAKA</td>
+          <td class="px-4 py-3">505</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ＬＡＰＵＴＡ２１</td>
+          <td class="px-4 py-3">303</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">Ｍ＆Ｍウメダイースト</td>
+          <td class="px-4 py-3">505</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">Ｍ＆Ｍウメダイースト</td>
+          <td class="px-4 py-3">601</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">みどり之園</td>
+          <td class="px-4 py-3">101</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">みどり之園</td>
+          <td class="px-4 py-3">102</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">ヤニ取れていない</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">みどり之園</td>
+          <td class="px-4 py-3">103</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">みどり之園</td>
+          <td class="px-4 py-3">115</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">みどり之園</td>
+          <td class="px-4 py-3">215</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">みどり之園</td>
+          <td class="px-4 py-3">311</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">みどり之園</td>
+          <td class="px-4 py-3">312</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">アレルヤ</td>
+          <td class="px-4 py-3">206</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">エンリィ学生マンション</td>
+          <td class="px-4 py-3">102</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">エンリィ学生マンション</td>
+          <td class="px-4 py-3">206</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">エンリィ学生マンション</td>
+          <td class="px-4 py-3">404</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">カサ・デ・グラナダ</td>
+          <td class="px-4 py-3">206</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">カサ・デ・グラナダ</td>
+          <td class="px-4 py-3">308</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">カーサスペリオーレⅠ</td>
+          <td class="px-4 py-3">405</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">カーサスペリオーレⅡ</td>
+          <td class="px-4 py-3">401</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">カーサスペリオーレⅡ</td>
+          <td class="px-4 py-3">407</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">カームヒルズⅠ</td>
+          <td class="px-4 py-3">101</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">カームヒルズⅡ</td>
+          <td class="px-4 py-3">202</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">カームヒルズⅡ</td>
+          <td class="px-4 py-3">207</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-rose-100 text-rose-700">★1</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">期間が開いていたからか、虫の死骸や蜘蛛の巣が多数あった。浴槽は白泡現象がひどく、隅が減り込む形で穴になっていた。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">クレール相川</td>
+          <td class="px-4 py-3">201</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">グランデアステール芦屋</td>
+          <td class="px-4 py-3">201</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">グランデアステール芦屋</td>
+          <td class="px-4 py-3">516</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">グランデアステール芦屋</td>
+          <td class="px-4 py-3">613</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">グランデアステール芦屋</td>
+          <td class="px-4 py-3">614</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-rose-100 text-rose-700">★1</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">リフォーム内容とかどうでも良くなるぐらい汚かったです。ワックス扉にかかって放置で完了？その他拭き漏れ多数あり。
+金取るレベルじゃ無いこのクオリティを兵庫エリアでやられるの相当しんどいです</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">グラン藤</td>
+          <td class="px-4 py-3">201</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">グリーンコーポＹＡＹＯＩ</td>
+          <td class="px-4 py-3">106</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">グリーンコーポＹＡＹＯＩ</td>
+          <td class="px-4 py-3">403</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コスモハイツ</td>
+          <td class="px-4 py-3">306</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コンセルト片山</td>
+          <td class="px-4 py-3">502</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コンセール愛宕山</td>
+          <td class="px-4 py-3">207</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">クローゼット内　拭き残しあり</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コンセール愛宕山</td>
+          <td class="px-4 py-3">208</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">間仕切りの扉建て付け不良でした。コンセール愛宕山で何軒かこの不具合あります。今回は蝶番起こしで直りましたが、直らない時も多いイメージですので退去時この辺りの確認もお願い致します。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コンセール愛宕山</td>
+          <td class="px-4 py-3">307</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コンセール裕恵</td>
+          <td class="px-4 py-3">504</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コンセール裕恵</td>
+          <td class="px-4 py-3">505</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">排水カゴ無し。ハウスクリーニング悪し</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コンセール裕恵</td>
+          <td class="px-4 py-3">608</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コート関大前</td>
+          <td class="px-4 py-3">A102</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コート関大前</td>
+          <td class="px-4 py-3">A202</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コート関大前</td>
+          <td class="px-4 py-3">C112</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">網戸破れありました。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コート関大前</td>
+          <td class="px-4 py-3">C115</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">洗いの業者が忘れていた為、完工日よりも遅れてしまっていました。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">コート関大前</td>
+          <td class="px-4 py-3">D116</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">サニーハイツⅠ</td>
+          <td class="px-4 py-3">202</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">サングレード千里</td>
+          <td class="px-4 py-3">402</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ソサエティ山手</td>
+          <td class="px-4 py-3">103</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">キッチンおよび浴室の水栓からわずかに水漏れが見られます。また、キッチン下の化粧板について、固定用のビスが不足しているようでした。さらに、カーテンの房掛けは両面テープが一部剥がれかけており、固定が弱くなっている印象を受けました。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ソサエティ山手</td>
+          <td class="px-4 py-3">105</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">風呂場の水栓の切替弁の不良でシャワーと蛇口から同時に水が出ていた。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ソサエティ山手</td>
+          <td class="px-4 py-3">106</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">洗いがリフォームUP日に終わっていなかったので困った</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ソサエティ山手</td>
+          <td class="px-4 py-3">308</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ソサエティ山手</td>
+          <td class="px-4 py-3">401</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-rose-100 text-rose-700">★1</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">浴室とキッチンの水栓で水漏れが見られた箇所がありました。また、カーテンレールのランナーに不良が複数あり、房掛けも割れた状態になっていました。念のためお伝えいたします。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ダイキハイム</td>
+          <td class="px-4 py-3">201</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ダイキハイム</td>
+          <td class="px-4 py-3">205</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ディアス山手Ⅲ</td>
+          <td class="px-4 py-3">310</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ディアス山手Ⅲ</td>
+          <td class="px-4 py-3">407</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ディアス山手Ⅲ</td>
+          <td class="px-4 py-3">421</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ディアス山手Ⅲ</td>
+          <td class="px-4 py-3">501</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">浴室の排水口の詰まりが原因で水を排水した際に溢れる状況を確認いたしました。清掃時にお気づきいただけた可能性もあるかと思いますので、今後のご参考までに共有いたします。現在は通貫作業により排水は正常に戻っております。引き続きよろしくお願いいたします。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ディアス山手Ⅲ</td>
+          <td class="px-4 py-3">505</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ドルチェアネックス</td>
+          <td class="px-4 py-3">103</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ドルチェアネックス</td>
+          <td class="px-4 py-3">201</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">浴室鏡ウロコ取れていなかった。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ドルチェアネックス</td>
+          <td class="px-4 py-3">205</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ドルチェ山手壱番館</td>
+          <td class="px-4 py-3">101</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ドルチェ山手壱番館</td>
+          <td class="px-4 py-3">103</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ハイツイオン</td>
+          <td class="px-4 py-3">B103</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ハイツ上ノ山</td>
+          <td class="px-4 py-3">202</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ハイツ上ノ山</td>
+          <td class="px-4 py-3">203</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ハイツ丸栄</td>
+          <td class="px-4 py-3">505</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">パル下新庄</td>
+          <td class="px-4 py-3">106</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ヒルサイドハウス源</td>
+          <td class="px-4 py-3">103</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">浴室の鏡前の棚について、清掃がされていない箇所がありました。また、目地にカビが残っている部分が見受けられましたので、念のためお伝えいたします。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ヒルサイドハウス源</td>
+          <td class="px-4 py-3">301</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">張り替えた洗面所床CFに糊のような汚れあり。窓枠小傷未修繕。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ヒルサイドハウス源</td>
+          <td class="px-4 py-3">303</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">ワックスを施した床に、髪の毛が多く残っている箇所がありましたので、念のためお伝えいたします。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ヒルバレー阪口</td>
+          <td class="px-4 py-3">103</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-rose-100 text-rose-700">★1</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">清掃の手直し多数</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ヒルバレー阪口</td>
+          <td class="px-4 py-3">208</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ヒルバレー阪口</td>
+          <td class="px-4 py-3">301</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-rose-100 text-rose-700">★1</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">清掃の手直し箇所多数</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ヒルバレー阪口</td>
+          <td class="px-4 py-3">302</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ヒルバレー阪口</td>
+          <td class="px-4 py-3">303</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-rose-100 text-rose-700">★1</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">清掃の手直しにかかる時間、負担大</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ヒルバレー阪口</td>
+          <td class="px-4 py-3">401</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">フェアリーフラッツ</td>
+          <td class="px-4 py-3">202</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">フェアリーフラッツ</td>
+          <td class="px-4 py-3">203</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">フェリス千里山</td>
+          <td class="px-4 py-3">303</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">フロンツォーネ</td>
+          <td class="px-4 py-3">402</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">CFの施工が荒い
+クローゼット敷居部分清掃されていません。
+キッチンコーキングカビがひどい</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">フロンツォーネ</td>
+          <td class="px-4 py-3">405</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">シャワーホース水漏れ、その他清掃あり</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">フローラルハイツ服部</td>
+          <td class="px-4 py-3">305</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ブルズアイ</td>
+          <td class="px-4 py-3">105</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ブルズアイ</td>
+          <td class="px-4 py-3">206</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">ウェットシートで床を拭いたら昨日洗いが終わったと思えないほど汚れた</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ブルズアイ</td>
+          <td class="px-4 py-3">304</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">ワックスにチリと髪の毛が大量に絡まっていた</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ブルズアイ</td>
+          <td class="px-4 py-3">404</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">クロス張替え後にエアコンリモコンケースを付けずに外したままでした。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ブルズアイ</td>
+          <td class="px-4 py-3">503</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">居室の床がチリが多く、居室扉の丁番が大きい音が鳴っていた。見積に入っていてもいなくてもあのレベルの音は見逃さないでほしい。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ブルズアイ</td>
+          <td class="px-4 py-3">504</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">全体的に清掃不良。浴室カビと張り替えた洗面CFに汚れあり。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ブルズアイ</td>
+          <td class="px-4 py-3">602</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">洗面化粧台の交換後のクロスと床の補修まで仕上げてほしかった。洗いが入っていなかったので明日の入居に間に合わない可能性もあったので気をつけていただきたいです。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ブルズアイ</td>
+          <td class="px-4 py-3">606</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">クロス貼り替え後のリモコンケースやペーパーホルダーについて、ビスが十分に効いていない箇所や、ビスを打った際に部材が割れたままの部分が見受けられました。このような状態が残らないようご配慮いただけますと幸いです。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ベア・ベリー</td>
+          <td class="px-4 py-3">202</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ベルエアー</td>
+          <td class="px-4 py-3">609</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ベルエアー</td>
+          <td class="px-4 py-3">1011</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">清掃の手直しが多い。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">マンションてりは</td>
+          <td class="px-4 py-3">405</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">メゾンセルクル</td>
+          <td class="px-4 py-3">304</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">メゾンセルクル</td>
+          <td class="px-4 py-3">401</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">メゾンラフィネ</td>
+          <td class="px-4 py-3">101</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">キッチン周り油汚れ、リビング髪の毛付着</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">メゾンラフィネ</td>
+          <td class="px-4 py-3">105</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">メゾンラフィネ</td>
+          <td class="px-4 py-3">205</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">ル・ウエスト・チトセ</td>
+          <td class="px-4 py-3">505</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">千里東壱番館</td>
+          <td class="px-4 py-3">1A</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">キッチンのコーキング変色が酷かったです。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">千里東壱番館</td>
+          <td class="px-4 py-3">3B</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">大阪謄写館ビル</td>
+          <td class="px-4 py-3">405</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">大阪謄写館ビル</td>
+          <td class="px-4 py-3">601</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">天神橋ハイム</td>
+          <td class="px-4 py-3">301</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-rose-100 text-rose-700">★1</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">手直し依頼</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">天神橋ハイム</td>
+          <td class="px-4 py-3">602</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">ペットの毛が室内中に残っている</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">平和ビル</td>
+          <td class="px-4 py-3">303</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">クローゼット内未清掃でした。
+ある程度のクオリティ確保お願い致します。</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">横山第１マンション</td>
+          <td class="px-4 py-3">116</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">横山第１マンション</td>
+          <td class="px-4 py-3">202</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">各所に毛髪類</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">横山第１マンション</td>
+          <td class="px-4 py-3">305</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+
+        <tr class="border-b last:border-b-0 hover:bg-slate-50">
+          <td class="px-4 py-3">泉町ロイヤルハイツＣ棟</td>
+          <td class="px-4 py-3">208</td>
+          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
+          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
+        </tr>
+            
+            </tbody>
+          </table>
+        </div>
+      </details>
+        
+    </section>
+    
+
+    
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+      
+    <div class="bg-white rounded-3xl p-6 shadow-lg border">
+      <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">主な指摘内容</h2>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700">
+              <th class="px-4 py-3 text-left">不具合内容</th>
+              <th class="px-4 py-3 text-right">件数</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">清掃不足</td>
+              <td class="px-4 py-3 text-right font-semibold">10</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">その他</td>
+              <td class="px-4 py-3 text-right font-semibold">7</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">補修不足</td>
+              <td class="px-4 py-3 text-right font-semibold">6</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">汚れ残り</td>
+              <td class="px-4 py-3 text-right font-semibold">5</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">傷・破損</td>
+              <td class="px-4 py-3 text-right font-semibold">4</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">漏水・水漏れ</td>
+              <td class="px-4 py-3 text-right font-semibold">4</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">髪の毛残り</td>
+              <td class="px-4 py-3 text-right font-semibold">4</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">カビ残り</td>
+              <td class="px-4 py-3 text-right font-semibold">3</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">ワックス不良</td>
+              <td class="px-4 py-3 text-right font-semibold">3</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">コーキング不良</td>
+              <td class="px-4 py-3 text-right font-semibold">2</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">めくれ・浮き</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">仕上げ不良</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">切替弁不良</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">建付け不良</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">拭き残し</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">排水詰まり</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">水垢</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">虫の死骸</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">蜘蛛の巣</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">部材不良</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+      
+    <div class="bg-white rounded-3xl p-6 shadow-lg border">
+      <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">主な指摘部位</h2>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700">
+              <th class="px-4 py-3 text-left">対象部位</th>
+              <th class="px-4 py-3 text-right">件数</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">その他</td>
+              <td class="px-4 py-3 text-right font-semibold">11</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">浴室</td>
+              <td class="px-4 py-3 text-right font-semibold">8</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">床</td>
+              <td class="px-4 py-3 text-right font-semibold">7</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">キッチン</td>
+              <td class="px-4 py-3 text-right font-semibold">5</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">建具</td>
+              <td class="px-4 py-3 text-right font-semibold">4</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">水栓</td>
+              <td class="px-4 py-3 text-right font-semibold">4</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">クロス</td>
+              <td class="px-4 py-3 text-right font-semibold">3</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">クローゼット</td>
+              <td class="px-4 py-3 text-right font-semibold">3</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">洗面</td>
+              <td class="px-4 py-3 text-right font-semibold">3</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">リモコンケース</td>
+              <td class="px-4 py-3 text-right font-semibold">2</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">房掛け</td>
+              <td class="px-4 py-3 text-right font-semibold">2</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">鏡</td>
+              <td class="px-4 py-3 text-right font-semibold">2</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">エアコン</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">カーテンレール</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">ダイノック</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">ペーパーホルダー</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">排水カゴ</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">排水口</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">棚</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">窓枠</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+
+            <tr class="border-b last:border-b-0 hover:bg-slate-50">
+              <td class="px-4 py-3">網戸</td>
+              <td class="px-4 py-3 text-right font-semibold">1</td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    </section>
+    
+
+    
+    <section class="bg-white rounded-3xl p-6 shadow-lg border mb-8">
+      <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">今後の重点確認ポイント</h2>
+      <ul class="list-disc pl-5 space-y-2 text-slate-700">
+        <li>引き渡し前に床面・隅部・収納内部・水回りの拭き上げを重点的にご確認いただけますと、品質の安定化につながると考えます。</li>
+<li>水回りでは水栓・排水・コーキング・鏡まわりの最終確認を重点化いただけますと、再指摘の低減が期待されます。</li>
+<li>建具作動・部材復旧・手直し完了のチェックを工程末に追加いただけますと、品質差の抑制につながると考えます。</li>
+<li>★2以下案件は要因と対応内容を短く共有し、再発防止の確認項目に反映いただけますと、全体品質の平準化が期待されます。</li>
+      </ul>
+    </section>
+    
+
+    
+
+    <section class="bg-white rounded-3xl p-6 shadow-lg border mb-12">
+      <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">総合評価</h2>
+      <div class="leading-8 text-[15px] text-slate-700 whitespace-pre-wrap">全体として施工品質は一定の水準で維持いただいていますが、★2以下案件のポイントを継続的に共有することで、さらに安定した品質につながると考えます。
+継続して見られる課題は 清掃不足（10件）、補修不足（6件） であり、同種指摘の再発防止が重要です。
+品質差につながりやすい箇所として 浴室、床 が挙げられ、最終確認の重点化が有効です。
+低評価案件の要因共有と手直し後の再確認を定着させることで、品質安定化と協力体制の強化につながると考えます。</div>
+    </section>
+
+  </div>
+
+<script>
+  const ctx = document.getElementById("ratingChart");
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["★1", "★2", "★3", "★4", "★5"],
+      datasets: [{
+        label: "件数",
+        data: [7, 10, 63, 40, 0],
+        barPercentage: 0.55,
+        categoryPercentage: 0.70
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: {
+        padding: {
+          top: 1,
+          right: 4,
+          bottom: 1,
+          left: 1
+        }
+      },
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        x: {
+          grid: {
+            display: false
+          },
+          ticks: {
+            color: "#64748b"
+          }
+        },
+        y: {
+          beginAtZero: true,
+          ticks: {
+            stepSize: 1,
+            color: "#64748b"
+          },
+          grid: {
+            color: "rgba(148, 163, 184, 0.16)",
+            drawBorder: false
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>
