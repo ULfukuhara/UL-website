@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: "Noto Sans JP", sans-serif; }
+    body { font-family: "Noto Sans JP", sans-serif; font-size: 15px; line-height: 1.75; }
     .glass { backdrop-filter: blur(8px); background: rgba(255,255,255,.82); }
     .section-title::before {
       content:"";
@@ -24,13 +24,13 @@
     }
     .chart-wrap {
       position: relative;
-      height: 140px;
+      height: 112px;
     }
     .chart-outer {
       max-width: 720px;
       margin: 0 auto;
     }
-    .comment-details { margin-top: 10px; }
+    .comment-details { margin-top: 8px; }
     .comment-details summary {
       cursor: pointer;
       list-style: none;
@@ -43,6 +43,16 @@
     }
     .comment-details summary::-webkit-details-marker { display: none; }
     .comment-details[open] summary { margin-bottom: 12px; }
+    .report-container { max-width: 1200px; margin: 0 auto; padding: 20px 16px 28px; }
+    .section-subtitle { font-size: 14px; color: #64748b; }
+    h1 { font-size: clamp(1.6rem, 4.6vw, 2.3rem); }
+    h2 { font-size: clamp(1.15rem, 3.8vw, 1.6rem); }
+    @media (max-width: 640px) {
+      body { font-size: 15px; }
+      .report-container { padding: 16px 12px 24px; }
+      .section-title::before { height: 22px; margin-right: .5rem; }
+      .chart-wrap { height: 92px; }
+    }
     @media print {
       .no-print { display:none !important; }
       body { background:#fff !important; }
@@ -53,71 +63,1106 @@
 </head>
 <body class="bg-slate-50 text-slate-800">
   <div class="bg-gradient-to-br from-blue-900 via-blue-700 to-sky-500 text-white">
-    <div class="max-w-7xl mx-auto px-6 py-10">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-7 md:py-10">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <div>
-          <p class="text-blue-100 tracking-widest text-sm mb-2">UNIV LIFE QUALITY REPORT</p>
+          <p class="hidden md:block text-blue-100 tracking-widest text-sm mb-2">UNIV LIFE QUALITY REPORT</p>
           <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">原状回復工事 施工品質評価レポート</h1>
-          <p class="mt-3 text-blue-50 text-base">業者へのフィードバックと品質向上のためのレポート</p>
+          <p class="mt-2 md:mt-3 text-blue-50 text-sm md:text-base">品質向上に向けた共有レポート</p>
         </div>
-        <div class="glass rounded-2xl px-5 py-4 text-slate-800 min-w-[280px]">
+        <div class="glass rounded-2xl px-5 py-4 text-slate-800 w-full md:w-auto md:min-w-[280px]">
           <div class="text-sm text-slate-500">対象業者</div>
           <div class="text-2xl font-bold text-blue-900">LINK</div>
           <div class="mt-3 text-sm text-slate-500">対象期間</div>
           <div class="font-semibold">2026年1月〜2026年3月</div>
           <div class="mt-3 text-sm text-slate-500">作成日</div>
-          <div class="font-semibold">2026年03月18日</div>
+          <div class="font-semibold">2026年03月19日</div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="max-w-7xl mx-auto px-6 py-6">
-    <div class="no-print flex flex-wrap gap-3 mb-6">
+  <div class="report-container">
+    <div class="no-print flex flex-wrap gap-3 mb-5">
       <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-semibold shadow-sm">印刷 / PDF保存</button>
     </div>
 
-    <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
+    
+    <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 mb-6">
       <div class="bg-white rounded-2xl p-5 shadow-sm border">
-        <div class="text-sm text-slate-500">平均評価</div>
-        <div class="text-3xl font-extrabold text-blue-700 mt-2">4.3</div>
-      </div>
-      <div class="bg-white rounded-2xl p-5 shadow-sm border">
-        <div class="text-sm text-slate-500">総件数</div>
+        <div class="text-xs md:text-sm text-slate-500">総件数</div>
         <div class="text-3xl font-extrabold mt-2">49</div>
       </div>
       <div class="bg-white rounded-2xl p-5 shadow-sm border">
-        <div class="text-sm text-slate-500">★4以上比率</div>
-        <div class="text-3xl font-extrabold mt-2 text-emerald-600">77.6%</div>
+        <div class="text-xs md:text-sm text-slate-500">平均評価</div>
+        <div class="text-3xl font-extrabold text-blue-700 mt-2">4.3</div>
       </div>
       <div class="bg-white rounded-2xl p-5 shadow-sm border">
-        <div class="text-sm text-slate-500">★2以下件数</div>
-        <div class="text-3xl font-extrabold mt-2 text-rose-600">1</div>
+        <div class="text-xs md:text-sm text-slate-500">是正対象件数（★2以下）</div>
+        <div class="text-3xl font-extrabold text-rose-600 mt-2">1</div>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border">
+        <div class="text-xs md:text-sm text-slate-500">是正率</div>
+        <div class="text-3xl font-extrabold text-amber-600 mt-2">2.0%</div>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border sm:col-span-2 xl:col-span-1">
+        <div class="text-xs md:text-sm text-slate-500 mb-2">主な不具合（上位3件）</div>
+        <div class="text-[14px] md:text-[15px] leading-7 text-slate-700">めくれ・浮き（3件） / 補修不足（2件） / 隙間（2件）</div>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border sm:col-span-2 xl:col-span-1">
+        <div class="text-xs md:text-sm text-slate-500 mb-2">主な対象部位（上位3件）</div>
+        <div class="text-[14px] md:text-[15px] leading-7 text-slate-700">巾木（3件） / 建具（3件） / エアコン（2件）</div>
       </div>
     </section>
+    
 
-    <section class="grid grid-cols-1 xl:grid-cols-12 gap-6 mb-8">
-      <div class="bg-white rounded-3xl p-6 shadow-lg border xl:col-span-5">
-        <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">総評</h2>
-        <div class="leading-8 text-[15px] text-slate-700 whitespace-pre-wrap">平均評価は4.3点（全49件）で、全体として一定の品質水準で施工いただいています。
+    <section class="bg-white rounded-3xl p-6 shadow-lg border mb-6">
+      <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">総評</h2>
+      <div class="leading-8 text-[14px] md:text-[15px] text-slate-700 whitespace-pre-wrap">平均評価は4.3点（全49件）で、全体として一定の品質水準で施工いただいています。
 主な確認事項はめくれ・浮き（3件）・補修不足（2件）で、部位では巾木（3件）・建具（3件）に関する指摘が中心でした。
 ★2以下の案件は1件あり、重点確認項目を共有しながら最終確認を進めることで、品質の安定化につながると考えます。</div>
-        <div class="mt-4 inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-800 font-semibold border border-blue-100">
-          品質水準：概ね良好
-        </div>
-      </div>
-      <div class="bg-white rounded-3xl p-5 shadow-lg border xl:col-span-7">
-        <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-3">評価分布</h2>
-        <div class="chart-outer">
-          <div class="chart-wrap">
-            <canvas id="ratingChart"></canvas>
-          </div>
-        </div>
+      <div class="mt-4 inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-800 font-semibold border border-blue-100">
+        品質水準：概ね良好
       </div>
     </section>
 
     
-    <section class="bg-slate-50 rounded-3xl p-6 shadow-sm border border-slate-200 mb-8">
+    <section class="bg-white rounded-3xl p-6 shadow-lg border mb-6">
+      <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">改善優先ポイント</h2>
+      <ul class="list-disc pl-5 space-y-2 text-slate-700">
+        <li>引き渡し前に床面・隅部・収納内部・水回りの拭き上げを重点的にご確認いただけますと、品質の安定化につながると考えます。</li>
+<li>水回りでは水栓・排水・コーキング・鏡まわりの最終確認を重点化いただけますと、再指摘の低減が期待されます。</li>
+<li>建具作動・部材復旧・手直し完了のチェックを工程末に追加いただけますと、品質差の抑制につながると考えます。</li>
+<li>★2以下案件は要因と対応内容を短く共有し、再発防止の確認項目に反映いただけますと、全体品質の平準化が期待されます。</li>
+      </ul>
+    </section>
+    
+
+    
+    <section class="mb-6">
+      
+    <div class="bg-white rounded-3xl p-6 shadow-lg border">
+      <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">主な不具合傾向</h2>
+      <div class="rounded-xl border border-slate-200 bg-slate-50/50 px-4">
+        
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">めくれ・浮き</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">3件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">その他</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">2件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">補修不足</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">2件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">隙間</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">2件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">カビ残り</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">1件</div>
+            </div>
+            
+      </div>
+      
+      <details class="comment-details mt-3">
+        <summary>その他7件を表示</summary>
+        <div class="rounded-xl border border-slate-200 bg-white/80 px-4 mt-3">
+          
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">コーキング不良</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">1件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">建付け不良</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">1件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">排水不良</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">1件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">排水詰まり</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">1件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">汚れ残り</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">1件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">清掃不足</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">1件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">漏水・水漏れ</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">1件</div>
+            </div>
+            
+        </div>
+      </details>
+        
+    </div>
+    
+    </section>
+    
+
+    
+    <section class="mb-6">
+      
+    <div class="bg-white rounded-3xl p-6 shadow-lg border">
+      <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">主な対象部位</h2>
+      <div class="rounded-xl border border-slate-200 bg-slate-50/50 px-4">
+        
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">巾木</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">3件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">建具</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">3件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">その他</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">2件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">エアコン</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">2件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">キッチン</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">2件</div>
+            </div>
+            
+      </div>
+      
+      <details class="comment-details mt-3">
+        <summary>その他6件を表示</summary>
+        <div class="rounded-xl border border-slate-200 bg-white/80 px-4 mt-3">
+          
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">クロス</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">2件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">水栓</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">2件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">浴室</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">2件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">カーテンレール</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">1件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">トイレ</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">1件</div>
+            </div>
+            
+
+            <div class="flex items-center justify-between gap-4 py-3 border-b last:border-b-0">
+              <div class="text-[15px] text-slate-700">洗面</div>
+              <div class="text-[15px] font-semibold text-slate-900 whitespace-nowrap">1件</div>
+            </div>
+            
+        </div>
+      </details>
+        
+    </div>
+    
+    </section>
+    
+
+    
+    <section class="bg-white rounded-3xl p-6 shadow-lg border mb-6">
+      <div class="flex items-center justify-between gap-4 mb-4">
+        <h2 class="section-title text-2xl font-extrabold text-slate-900">コメント一覧（全件）</h2>
+        <span class="text-sm text-slate-500">13件</span>
+      </div>
+      
+      <div class="space-y-3">
+        
+      <article class="rounded-2xl border border-slate-200 bg-white p-4 md:p-5 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div class="text-sm md:text-base font-semibold text-slate-900">
+            ホワイティ18 / 301
+          </div>
+        </div>
+        <div class="text-sm text-slate-600 mb-3">
+          <span class="mr-3">評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></span>
+          <span>日付：2026/02/05 9:24:56</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700"><span class="font-medium text-slate-800">コメント：</span>トイレのドアノブが空回りしており、正常に作動していない状態でした。また、浴室入口の木枠は塗装の剥がれが大きく進んでいる状況でした。</div>
+      </article>
+            
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-4 md:p-5 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div class="text-sm md:text-base font-semibold text-slate-900">
+            ガルリ高槻 / 205
+          </div>
+        </div>
+        <div class="text-sm text-slate-600 mb-3">
+          <span class="mr-3">評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span>日付：2026/3/10 11:51:39</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700"><span class="font-medium text-slate-800">コメント：</span>巾木が全体的に浮いている</div>
+      </article>
+            
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-4 md:p-5 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div class="text-sm md:text-base font-semibold text-slate-900">
+            グランヴァレー彩都 / 412
+          </div>
+        </div>
+        <div class="text-sm text-slate-600 mb-3">
+          <span class="mr-3">評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span>日付：2026/03/13 15:00:38</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700"><span class="font-medium text-slate-800">コメント：</span>居室巾木浮き、天井クロス浮き</div>
+      </article>
+            
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-4 md:p-5 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div class="text-sm md:text-base font-semibold text-slate-900">
+            サウザンドマイルズアーク / 501
+          </div>
+        </div>
+        <div class="text-sm text-slate-600 mb-3">
+          <span class="mr-3">評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span>日付：2026/3/9 18:38:36</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700"><span class="font-medium text-slate-800">コメント：</span>先に洗いが入ってリフォームした後の清掃が無かったので、ホコリや粉が広範囲で落ちていた</div>
+      </article>
+            
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-4 md:p-5 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div class="text-sm md:text-base font-semibold text-slate-900">
+            サウザンドマイルズアーク / 613
+          </div>
+        </div>
+        <div class="text-sm text-slate-600 mb-3">
+          <span class="mr-3">評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span>日付：2026/3/11 18:57:07</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700"><span class="font-medium text-slate-800">コメント：</span>リフォーム後のチリが散乱していた。</div>
+      </article>
+            
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-4 md:p-5 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div class="text-sm md:text-base font-semibold text-slate-900">
+            ブラオ高槻 / 308
+          </div>
+        </div>
+        <div class="text-sm text-slate-600 mb-3">
+          <span class="mr-3">評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span>日付：2026/01/26 18:27:40</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700"><span class="font-medium text-slate-800">コメント：</span>エアコンダクトカバー隙間あり、ドアクローザー固定ビス外れ</div>
+      </article>
+            
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-4 md:p-5 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div class="text-sm md:text-base font-semibold text-slate-900">
+            リュミエール北園 / 206
+          </div>
+        </div>
+        <div class="text-sm text-slate-600 mb-3">
+          <span class="mr-3">評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span>日付：2026/02/22 13:34:18</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700"><span class="font-medium text-slate-800">コメント：</span>カーテンレールがたつき、シャワーカラン切り替え弁交換、浴室コーキングカビ補修</div>
+      </article>
+            
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-4 md:p-5 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div class="text-sm md:text-base font-semibold text-slate-900">
+            ShaMaison Forena / 303
+          </div>
+        </div>
+        <div class="text-sm text-slate-600 mb-3">
+          <span class="mr-3">評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span>日付：2026/2/16 10:08:33</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700"><span class="font-medium text-slate-800">コメント：</span>キッチン横クロスの油汚れ点在</div>
+      </article>
+            
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-4 md:p-5 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div class="text-sm md:text-base font-semibold text-slate-900">
+            ガルリ高槻 / 103
+          </div>
+        </div>
+        <div class="text-sm text-slate-600 mb-3">
+          <span class="mr-3">評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span>日付：2026/3/10 11:50:26</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700"><span class="font-medium text-slate-800">コメント：</span>洗面台排水不良ゴミ詰まり</div>
+      </article>
+            
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-4 md:p-5 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div class="text-sm md:text-base font-semibold text-slate-900">
+            ブラオ高槻 / 210
+          </div>
+        </div>
+        <div class="text-sm text-slate-600 mb-3">
+          <span class="mr-3">評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span>日付：2026/01/26 18:25:41</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700"><span class="font-medium text-slate-800">コメント：</span>エアコン室内ダクトカバー隙間補修</div>
+      </article>
+            
+      </div>
+      
+      <details class="comment-details mt-4">
+        <summary>残り3件を表示</summary>
+        <div class="mt-3 space-y-3">
+          
+      <article class="rounded-2xl border border-slate-200 bg-white p-4 md:p-5 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div class="text-sm md:text-base font-semibold text-slate-900">
+            メゾンヴェール月見町Ⅱ / 6
+          </div>
+        </div>
+        <div class="text-sm text-slate-600 mb-3">
+          <span class="mr-3">評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span>日付：2026/01/16 10:20:47</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700"><span class="font-medium text-slate-800">コメント：</span>台所水栓の付け根から漏水あり</div>
+      </article>
+            
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-4 md:p-5 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div class="text-sm md:text-base font-semibold text-slate-900">
+            リュミエール北園 / 208
+          </div>
+        </div>
+        <div class="text-sm text-slate-600 mb-3">
+          <span class="mr-3">評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span>日付：2026/3/6 9:55:46</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700"><span class="font-medium text-slate-800">コメント：</span>巾木浮き数カ所あり</div>
+      </article>
+            
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-4 md:p-5 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div class="text-sm md:text-base font-semibold text-slate-900">
+            レーベンハイム / 407
+          </div>
+        </div>
+        <div class="text-sm text-slate-600 mb-3">
+          <span class="mr-3">評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span>日付：2026/02/22 10:12:54</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700"><span class="font-medium text-slate-800">コメント：</span>玄関扉の建付不良（蝶番固定ビスの緩み</div>
+      </article>
+            
+        </div>
+      </details>
+            
+        
+    </section>
+    
+
+    
+    <section class="mb-6">
+      <div class="bg-white rounded-3xl p-6 shadow-lg border w-full max-w-2xl">
+        <div class="flex items-center justify-between gap-4 mb-4">
+          <h2 class="section-title text-2xl font-extrabold text-slate-900">コメント件数の多い物件</h2>
+          <span class="text-sm text-slate-500">上位5件</span>
+        </div>
+        <ul class="space-y-0">
+          <li class="flex items-center justify-between gap-4 border-b last:border-b-0 py-2"><span class="text-slate-700">ガルリ高槻</span><span class="text-slate-900 font-semibold">2件</span></li>
+<li class="flex items-center justify-between gap-4 border-b last:border-b-0 py-2"><span class="text-slate-700">サウザンドマイルズアーク</span><span class="text-slate-900 font-semibold">2件</span></li>
+<li class="flex items-center justify-between gap-4 border-b last:border-b-0 py-2"><span class="text-slate-700">ブラオ高槻</span><span class="text-slate-900 font-semibold">2件</span></li>
+<li class="flex items-center justify-between gap-4 border-b last:border-b-0 py-2"><span class="text-slate-700">リュミエール北園</span><span class="text-slate-900 font-semibold">2件</span></li>
+<li class="flex items-center justify-between gap-4 border-b last:border-b-0 py-2"><span class="text-slate-700">ホワイティ18</span><span class="text-slate-900 font-semibold">1件</span></li>
+        </ul>
+      </div>
+    </section>
+    
+
+    
+    <section class="bg-white rounded-3xl p-6 shadow-lg border mb-6 print-break">
+      <h2 class="section-title text-2xl font-extrabold text-slate-900">一覧（全件）</h2>
+      
+      <details class="comment-details">
+        <summary>記録一覧：全49件（コメントあり13件）</summary>
+        <div class="mt-3 space-y-2.5">
+          
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ２２２番館 / 308
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/01/22 10:24:35</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ＆Space山手町 / 2
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span class="text-slate-500">日付：2026/2/16 13:09:35</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ＆Space茨木 / 7
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/3/12 14:44:12</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ＆Space茨木 / 8
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/3/12 13:30:11</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          Ａｒｔ２１ / 303
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span class="text-slate-500">日付：2026/03/13 8:10:58</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          Ａｒｔ２１ / 305
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span class="text-slate-500">日付：2026/02/08 17:44:39</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+        </div>
+        
+      <details class="comment-details mt-3">
+        <summary>次の12件を表示</summary>
+        <div class="mt-3 space-y-2.5">
+          
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          Ａｒｔ２１ / 308
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span class="text-slate-500">日付：2026/02/06 9:49:24</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          Lago Primavera KOSOBE / 208
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/02/12 10:26:52</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          Lago Primavera KOSOBE / 408
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/02/12 10:27:37</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ShaMaison Forena / 303
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span class="text-slate-500">日付：2026/2/16 10:08:33</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700 mt-2"><span class="font-medium text-slate-800">コメント：</span>キッチン横クロスの油汚れ点在</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          Ｗｅｓｔ　ＡＭＡ / 206
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/2/28 18:17:01</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ガルリ高槻 / 103
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span class="text-slate-500">日付：2026/3/10 11:50:26</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700 mt-2"><span class="font-medium text-slate-800">コメント：</span>洗面台排水不良ゴミ詰まり</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ガルリ高槻 / 203
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/01/27 18:05:15</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ガルリ高槻 / 205
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span class="text-slate-500">日付：2026/3/10 11:51:39</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700 mt-2"><span class="font-medium text-slate-800">コメント：</span>巾木が全体的に浮いている</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          グランヴァレー彩都 / 305
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/2/23 16:34:22</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          グランヴァレー彩都 / 412
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span class="text-slate-500">日付：2026/03/13 15:00:38</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700 mt-2"><span class="font-medium text-slate-800">コメント：</span>居室巾木浮き、天井クロス浮き</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          グランヴァレー彩都 / 504
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/03/13 13:51:51</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          グランヴァレー彩都 / 704
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span class="text-slate-500">日付：2026/01/07 9:56:05</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+        </div>
+      </details>
+            
+        
+      <details class="comment-details mt-3">
+        <summary>残り31件を表示</summary>
+        <div class="mt-3 space-y-2.5">
+          
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          サウザンドマイルズアーク / 501
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span class="text-slate-500">日付：2026/3/9 18:38:36</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700 mt-2"><span class="font-medium text-slate-800">コメント：</span>先に洗いが入ってリフォームした後の清掃が無かったので、ホコリや粉が広範囲で落ちていた</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          サウザンドマイルズアーク / 613
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span class="text-slate-500">日付：2026/3/11 18:57:07</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700 mt-2"><span class="font-medium text-slate-800">コメント：</span>リフォーム後のチリが散乱していた。</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ソキウス山手町 / 102
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span class="text-slate-500">日付：2026/3/7 18:19:45</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ソキウス山手町 / 308
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span class="text-slate-500">日付：2026/02/10 15:28:14</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ソキウス山手町 / 401
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span class="text-slate-500">日付：2026/01/12 18:32:02</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ドームイバロード / 202
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/3/9 14:28:19</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ドームイバロード / 306
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/3/9 14:29:02</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ドームイバロード / 505
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span class="text-slate-500">日付：2026/01/16 16:19:26</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ノイレーベン古曽部 / 212
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/01/26 18:21:58</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ノイレーベン古曽部 / 308
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/03/16 9:21:11</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ノイレーベン古曽部 / 311
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/3/12 10:02:27</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          パラッツォ / 403
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/2/17 12:14:35</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          フィオーレ南平台 / 303
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/03/16 12:09:06</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          フィオーレ南平台 / 304
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/01/06 10:55:18</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ブラオ高槻 / 210
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span class="text-slate-500">日付：2026/01/26 18:25:41</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700 mt-2"><span class="font-medium text-slate-800">コメント：</span>エアコン室内ダクトカバー隙間補修</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ブラオ高槻 / 302
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/03/16 9:40:00</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ブラオ高槻 / 308
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span class="text-slate-500">日付：2026/01/26 18:27:40</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700 mt-2"><span class="font-medium text-slate-800">コメント：</span>エアコンダクトカバー隙間あり、ドアクローザー固定ビス外れ</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ホワイティ18 / 206
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span class="text-slate-500">日付：2026/03/16 21:03:32</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ホワイティ18 / 301
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></span>
+          <span class="text-slate-500">日付：2026/02/05 9:24:56</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700 mt-2"><span class="font-medium text-slate-800">コメント：</span>トイレのドアノブが空回りしており、正常に作動していない状態でした。また、浴室入口の木枠は塗装の剥がれが大きく進んでいる状況でした。</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ホーミーレジデンス / 302
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/2/18 11:44:30</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          メゾンヴェール月見町Ⅰ / 101
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/01/28 11:16:27</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          メゾンヴェール月見町Ⅱ / 6
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span class="text-slate-500">日付：2026/01/16 10:20:47</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700 mt-2"><span class="font-medium text-slate-800">コメント：</span>台所水栓の付け根から漏水あり</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ユニバーサルコート / 101
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/03/16 15:27:06</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ユニバーサルコート / 103
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/03/16 15:34:44</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ユニバーサルコート / 203
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/3/2 11:36:34</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          ラ ヴィ クレール コソベ / 206
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/01/27 16:28:52</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          リュミエール北園 / 206
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></span>
+          <span class="text-slate-500">日付：2026/02/22 13:34:18</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700 mt-2"><span class="font-medium text-slate-800">コメント：</span>カーテンレールがたつき、シャワーカラン切り替え弁交換、浴室コーキングカビ補修</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          リュミエール北園 / 208
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span class="text-slate-500">日付：2026/3/6 9:55:46</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700 mt-2"><span class="font-medium text-slate-800">コメント：</span>巾木浮き数カ所あり</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          レーベンハイム / 407
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></span>
+          <span class="text-slate-500">日付：2026/02/22 10:12:54</span>
+        </div>
+        <div class="text-[15px] leading-7 whitespace-pre-wrap text-slate-700 mt-2"><span class="font-medium text-slate-800">コメント：</span>玄関扉の建付不良（蝶番固定ビスの緩み</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          彩都シオン / 203
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/02/23 14:31:14</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+
+      <article class="rounded-xl border border-slate-200 bg-white p-3.5 md:p-4 shadow-sm">
+        <div class="text-sm md:text-[15px] font-semibold text-slate-900">
+          第２高槻ハイム / 207
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-600">
+          <span>評価：<span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></span>
+          <span class="text-slate-500">日付：2026/01/09 10:08:55</span>
+        </div>
+        <div class="text-sm text-slate-400 mt-2">コメントなし</div>
+      </article>
+            
+        </div>
+      </details>
+            
+      </details>
+        
+    </section>
+    
+
+    <section class="bg-white rounded-3xl p-5 shadow-lg border mb-6">
+      <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-3">補足（評価分布）</h2>
+      <div class="chart-outer">
+        <div class="chart-wrap">
+          <canvas id="ratingChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <details class="comment-details mb-6">
+      <summary>評価基準を表示</summary>
+      <div class="mt-3">
+        
+    <section class="bg-slate-50 rounded-3xl p-6 shadow-sm border border-slate-200 mb-2">
       <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">評価基準</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-2">
         
@@ -153,784 +1198,10 @@
       </div>
     </section>
     
-
-    
-    <section class="mb-8">
-      <div class="bg-white rounded-3xl p-6 shadow-lg border w-full md:w-1/2">
-        <div class="flex items-center justify-between gap-4 mb-4">
-          <h2 class="section-title text-2xl font-extrabold text-slate-900">コメント件数の多い物件</h2>
-          <span class="text-sm text-slate-500">上位5件</span>
-        </div>
-        <ul class="space-y-0">
-          <li class="flex items-center justify-between gap-4 border-b last:border-b-0 py-2"><span class="text-slate-700">ガルリ高槻</span><span class="text-slate-900 font-semibold">2件</span></li>
-<li class="flex items-center justify-between gap-4 border-b last:border-b-0 py-2"><span class="text-slate-700">サウザンドマイルズアーク</span><span class="text-slate-900 font-semibold">2件</span></li>
-<li class="flex items-center justify-between gap-4 border-b last:border-b-0 py-2"><span class="text-slate-700">ブラオ高槻</span><span class="text-slate-900 font-semibold">2件</span></li>
-<li class="flex items-center justify-between gap-4 border-b last:border-b-0 py-2"><span class="text-slate-700">リュミエール北園</span><span class="text-slate-900 font-semibold">2件</span></li>
-<li class="flex items-center justify-between gap-4 border-b last:border-b-0 py-2"><span class="text-slate-700">ホワイティ18</span><span class="text-slate-900 font-semibold">1件</span></li>
-        </ul>
       </div>
-    </section>
-    
-    <section class="bg-white rounded-3xl p-6 shadow-lg border mb-8">
-      <div class="flex items-center justify-between gap-4 mb-4">
-        <h2 class="section-title text-2xl font-extrabold text-slate-900">コメント一覧（全件）</h2>
-        <span class="text-sm text-slate-500">13件</span>
-      </div>
-      
-      <div class="overflow-x-auto">
-        <table class="min-w-full text-sm">
-          <thead>
-            <tr class="bg-slate-100 text-slate-700">
-              <th class="px-4 py-3 text-left">物件名</th>
-              <th class="px-4 py-3 text-left">号室</th>
-              <th class="px-4 py-3 text-left">評価</th>
-              <th class="px-4 py-3 text-left">コメント</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ホワイティ18</td>
-          <td class="px-4 py-3">301</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">トイレのドアノブが空回りしており、正常に作動していない状態でした。また、浴室入口の木枠は塗装の剥がれが大きく進んでいる状況でした。</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ガルリ高槻</td>
-          <td class="px-4 py-3">205</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">巾木が全体的に浮いている</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">グランヴァレー彩都</td>
-          <td class="px-4 py-3">412</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">居室巾木浮き、天井クロス浮き</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">サウザンドマイルズアーク</td>
-          <td class="px-4 py-3">501</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">先に洗いが入ってリフォームした後の清掃が無かったので、ホコリや粉が広範囲で落ちていた</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">サウザンドマイルズアーク</td>
-          <td class="px-4 py-3">613</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">リフォーム後のチリが散乱していた。</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ブラオ高槻</td>
-          <td class="px-4 py-3">308</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">エアコンダクトカバー隙間あり、ドアクローザー固定ビス外れ</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">リュミエール北園</td>
-          <td class="px-4 py-3">206</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">カーテンレールがたつき、シャワーカラン切り替え弁交換、浴室コーキングカビ補修</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ShaMaison Forena</td>
-          <td class="px-4 py-3">303</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">キッチン横クロスの油汚れ点在</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ガルリ高槻</td>
-          <td class="px-4 py-3">103</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">洗面台排水不良ゴミ詰まり</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ブラオ高槻</td>
-          <td class="px-4 py-3">210</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">エアコン室内ダクトカバー隙間補修</td>
-        </tr>
-            
-          </tbody>
-        </table>
-      </div>
-      
-      <details class="comment-details mt-4">
-        <summary>残り3件を表示</summary>
-        <div class="overflow-x-auto mt-3">
-          <table class="min-w-full text-sm">
-            <thead>
-              <tr class="bg-slate-100 text-slate-700">
-                <th class="px-4 py-3 text-left">物件名</th>
-                <th class="px-4 py-3 text-left">号室</th>
-                <th class="px-4 py-3 text-left">評価</th>
-                <th class="px-4 py-3 text-left">コメント</th>
-              </tr>
-            </thead>
-            <tbody>
-              
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">メゾンヴェール月見町Ⅱ</td>
-          <td class="px-4 py-3">6</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">台所水栓の付け根から漏水あり</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">リュミエール北園</td>
-          <td class="px-4 py-3">208</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">巾木浮き数カ所あり</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">レーベンハイム</td>
-          <td class="px-4 py-3">407</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">玄関扉の建付不良（蝶番固定ビスの緩み</td>
-        </tr>
-            
-            </tbody>
-          </table>
-        </div>
-      </details>
-            
-        
-    </section>
-    
-    <section class="bg-white rounded-3xl p-6 shadow-lg border mb-8 print-break">
-      <h2 class="section-title text-2xl font-extrabold text-slate-900">一覧（全件）</h2>
-      
-      <details class="comment-details">
-        <summary>全49件を表示（コメントあり13件）</summary>
-        <div class="overflow-x-auto">
-          <table class="min-w-full text-sm">
-            <thead>
-              <tr class="bg-slate-100 text-slate-700">
-                <th class="px-4 py-3 text-left">物件名</th>
-                <th class="px-4 py-3 text-left">号室</th>
-                <th class="px-4 py-3 text-left">評価</th>
-                <th class="px-4 py-3 text-left">コメント</th>
-              </tr>
-            </thead>
-            <tbody>
-              
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">２２２番館</td>
-          <td class="px-4 py-3">308</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">＆Space山手町</td>
-          <td class="px-4 py-3">2</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">＆Space茨木</td>
-          <td class="px-4 py-3">7</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">＆Space茨木</td>
-          <td class="px-4 py-3">8</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">Ａｒｔ２１</td>
-          <td class="px-4 py-3">303</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">Ａｒｔ２１</td>
-          <td class="px-4 py-3">305</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">Ａｒｔ２１</td>
-          <td class="px-4 py-3">308</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">Lago Primavera KOSOBE</td>
-          <td class="px-4 py-3">208</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">Lago Primavera KOSOBE</td>
-          <td class="px-4 py-3">408</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ShaMaison Forena</td>
-          <td class="px-4 py-3">303</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">キッチン横クロスの油汚れ点在</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">Ｗｅｓｔ　ＡＭＡ</td>
-          <td class="px-4 py-3">206</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ガルリ高槻</td>
-          <td class="px-4 py-3">103</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">洗面台排水不良ゴミ詰まり</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ガルリ高槻</td>
-          <td class="px-4 py-3">203</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ガルリ高槻</td>
-          <td class="px-4 py-3">205</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">巾木が全体的に浮いている</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">グランヴァレー彩都</td>
-          <td class="px-4 py-3">305</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">グランヴァレー彩都</td>
-          <td class="px-4 py-3">412</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">居室巾木浮き、天井クロス浮き</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">グランヴァレー彩都</td>
-          <td class="px-4 py-3">504</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">グランヴァレー彩都</td>
-          <td class="px-4 py-3">704</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">サウザンドマイルズアーク</td>
-          <td class="px-4 py-3">501</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">先に洗いが入ってリフォームした後の清掃が無かったので、ホコリや粉が広範囲で落ちていた</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">サウザンドマイルズアーク</td>
-          <td class="px-4 py-3">613</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">リフォーム後のチリが散乱していた。</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ソキウス山手町</td>
-          <td class="px-4 py-3">102</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ソキウス山手町</td>
-          <td class="px-4 py-3">308</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ソキウス山手町</td>
-          <td class="px-4 py-3">401</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ドームイバロード</td>
-          <td class="px-4 py-3">202</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ドームイバロード</td>
-          <td class="px-4 py-3">306</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ドームイバロード</td>
-          <td class="px-4 py-3">505</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ノイレーベン古曽部</td>
-          <td class="px-4 py-3">212</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ノイレーベン古曽部</td>
-          <td class="px-4 py-3">308</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ノイレーベン古曽部</td>
-          <td class="px-4 py-3">311</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">パラッツォ</td>
-          <td class="px-4 py-3">403</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">フィオーレ南平台</td>
-          <td class="px-4 py-3">303</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">フィオーレ南平台</td>
-          <td class="px-4 py-3">304</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ブラオ高槻</td>
-          <td class="px-4 py-3">210</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">エアコン室内ダクトカバー隙間補修</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ブラオ高槻</td>
-          <td class="px-4 py-3">302</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ブラオ高槻</td>
-          <td class="px-4 py-3">308</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">エアコンダクトカバー隙間あり、ドアクローザー固定ビス外れ</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ホワイティ18</td>
-          <td class="px-4 py-3">206</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ホワイティ18</td>
-          <td class="px-4 py-3">301</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-orange-100 text-orange-700">★2</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">トイレのドアノブが空回りしており、正常に作動していない状態でした。また、浴室入口の木枠は塗装の剥がれが大きく進んでいる状況でした。</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ホーミーレジデンス</td>
-          <td class="px-4 py-3">302</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">メゾンヴェール月見町Ⅰ</td>
-          <td class="px-4 py-3">101</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">メゾンヴェール月見町Ⅱ</td>
-          <td class="px-4 py-3">6</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">台所水栓の付け根から漏水あり</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ユニバーサルコート</td>
-          <td class="px-4 py-3">101</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ユニバーサルコート</td>
-          <td class="px-4 py-3">103</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ユニバーサルコート</td>
-          <td class="px-4 py-3">203</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">ラ ヴィ クレール コソベ</td>
-          <td class="px-4 py-3">206</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">リュミエール北園</td>
-          <td class="px-4 py-3">206</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700">★3</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">カーテンレールがたつき、シャワーカラン切り替え弁交換、浴室コーキングカビ補修</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">リュミエール北園</td>
-          <td class="px-4 py-3">208</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">巾木浮き数カ所あり</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">レーベンハイム</td>
-          <td class="px-4 py-3">407</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-blue-100 text-blue-700">★4</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">玄関扉の建付不良（蝶番固定ビスの緩み</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">彩都シオン</td>
-          <td class="px-4 py-3">203</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-
-        <tr class="border-b last:border-b-0 hover:bg-slate-50">
-          <td class="px-4 py-3">第２高槻ハイム</td>
-          <td class="px-4 py-3">207</td>
-          <td class="px-4 py-3"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700">★5</span></td>
-          <td class="px-4 py-3 whitespace-pre-wrap">-</td>
-        </tr>
-            
-            </tbody>
-          </table>
-        </div>
-      </details>
-        
-    </section>
-    
+    </details>
 
     
-    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-      
-    <div class="bg-white rounded-3xl p-6 shadow-lg border">
-      <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">主な指摘内容</h2>
-      <div class="overflow-x-auto">
-        <table class="min-w-full text-sm">
-          <thead>
-            <tr class="bg-slate-100 text-slate-700">
-              <th class="px-4 py-3 text-left">不具合内容</th>
-              <th class="px-4 py-3 text-right">件数</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">めくれ・浮き</td>
-              <td class="px-4 py-3 text-right font-semibold">3</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">その他</td>
-              <td class="px-4 py-3 text-right font-semibold">2</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">補修不足</td>
-              <td class="px-4 py-3 text-right font-semibold">2</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">隙間</td>
-              <td class="px-4 py-3 text-right font-semibold">2</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">カビ残り</td>
-              <td class="px-4 py-3 text-right font-semibold">1</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">コーキング不良</td>
-              <td class="px-4 py-3 text-right font-semibold">1</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">建付け不良</td>
-              <td class="px-4 py-3 text-right font-semibold">1</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">排水不良</td>
-              <td class="px-4 py-3 text-right font-semibold">1</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">排水詰まり</td>
-              <td class="px-4 py-3 text-right font-semibold">1</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">汚れ残り</td>
-              <td class="px-4 py-3 text-right font-semibold">1</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">清掃不足</td>
-              <td class="px-4 py-3 text-right font-semibold">1</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">漏水・水漏れ</td>
-              <td class="px-4 py-3 text-right font-semibold">1</td>
-            </tr>
-            
-          </tbody>
-        </table>
-      </div>
-    </div>
-    
-      
-    <div class="bg-white rounded-3xl p-6 shadow-lg border">
-      <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">主な指摘部位</h2>
-      <div class="overflow-x-auto">
-        <table class="min-w-full text-sm">
-          <thead>
-            <tr class="bg-slate-100 text-slate-700">
-              <th class="px-4 py-3 text-left">対象部位</th>
-              <th class="px-4 py-3 text-right">件数</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">巾木</td>
-              <td class="px-4 py-3 text-right font-semibold">3</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">建具</td>
-              <td class="px-4 py-3 text-right font-semibold">3</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">その他</td>
-              <td class="px-4 py-3 text-right font-semibold">2</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">エアコン</td>
-              <td class="px-4 py-3 text-right font-semibold">2</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">キッチン</td>
-              <td class="px-4 py-3 text-right font-semibold">2</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">クロス</td>
-              <td class="px-4 py-3 text-right font-semibold">2</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">水栓</td>
-              <td class="px-4 py-3 text-right font-semibold">2</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">浴室</td>
-              <td class="px-4 py-3 text-right font-semibold">2</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">カーテンレール</td>
-              <td class="px-4 py-3 text-right font-semibold">1</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">トイレ</td>
-              <td class="px-4 py-3 text-right font-semibold">1</td>
-            </tr>
-            
-
-            <tr class="border-b last:border-b-0 hover:bg-slate-50">
-              <td class="px-4 py-3">洗面</td>
-              <td class="px-4 py-3 text-right font-semibold">1</td>
-            </tr>
-            
-          </tbody>
-        </table>
-      </div>
-    </div>
-    
-    </section>
-    
-
-    
-    <section class="bg-white rounded-3xl p-6 shadow-lg border mb-8">
-      <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">今後の重点確認ポイント</h2>
-      <ul class="list-disc pl-5 space-y-2 text-slate-700">
-        <li>引き渡し前に床面・隅部・収納内部・水回りの拭き上げを重点的にご確認いただけますと、品質の安定化につながると考えます。</li>
-<li>水回りでは水栓・排水・コーキング・鏡まわりの最終確認を重点化いただけますと、再指摘の低減が期待されます。</li>
-<li>建具作動・部材復旧・手直し完了のチェックを工程末に追加いただけますと、品質差の抑制につながると考えます。</li>
-<li>★2以下案件は要因と対応内容を短く共有し、再発防止の確認項目に反映いただけますと、全体品質の平準化が期待されます。</li>
-      </ul>
-    </section>
-    
-
-    
-
-    <section class="bg-white rounded-3xl p-6 shadow-lg border mb-12">
-      <h2 class="section-title text-2xl font-extrabold text-slate-900 mb-4">総合評価</h2>
-      <div class="leading-8 text-[15px] text-slate-700 whitespace-pre-wrap">全体として施工品質は一定の水準で維持いただいていますが、★2以下案件のポイントを継続的に共有することで、さらに安定した品質につながると考えます。
-継続して見られる課題は めくれ・浮き（3件）、補修不足（2件） であり、同種指摘の再発防止が重要です。
-品質差につながりやすい箇所として 巾木、建具 が挙げられ、最終確認の重点化が有効です。
-低評価案件の要因共有と手直し後の再確認を定着させることで、品質安定化と協力体制の強化につながると考えます。</div>
-    </section>
 
   </div>
 
